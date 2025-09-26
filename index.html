@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Map with Current Location</title>
+    <title>Map with Current Location.</title>
     <style>
         #map {
             position: relative;
@@ -221,9 +221,8 @@
 
         // Example array of GPS positions
         const locations = [
-            { lat: 39.5102, lng: -0.3217, title: "Point A", description: "This is the first location." },
-            { lat: 39.5100, lng: -0.3215, title: "Point B", description: "This is the second location." },
-            { lat: 39.5098, lng: -0.3213, title: "Point C", description: "This is the third location." }
+            { lat: 39.50976772508571, lng: -0.32156363413368727, title: "Information Point", description: "This is the first location." },
+            { lat: 39.47554381798084, lng: -0.3754577626513921, title: "Catedral", description: "Built a long time ago" }
         ];
 
         function getLocationOnMap(lat, lng) {
@@ -249,7 +248,7 @@
         function drawLocations() {
             locations.forEach(loc => {
                 const { x, y } = getLocationOnMap(loc.lat, loc.lng);
-
+                if(!locationWithinCurrentMap({x,y})) return;
                 // Create dot
                 const dot = document.createElement('div');
                 dot.className = 'dot';
@@ -261,12 +260,20 @@
                 // Create label
                 const label = document.createElement('div');
                 label.className = 'label';
-                label.style.left = `${x + 10}px`; // offset a bit to the right
+                label.style.left = `${x + 5}px`; // offset a bit to the right
                 label.style.top = `${y}px`;
                 label.textContent = loc.title;
                 label.addEventListener('click', () => showInfo(loc));
                 map.appendChild(label);
             });
+        }
+
+        function locationWithinCurrentMap({x,y}) {
+            if(x < 0) {
+                logMessage(`Does not fit on the current map`);
+                return false;
+            }
+            return true;
         }
 
         drawLocations();
