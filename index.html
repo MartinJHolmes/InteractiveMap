@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map with Current Location</title>
+    <style>
+        #map {
+            position: relative;
+            width: 364px;
+            height: 727px;
+            /* background-image: url('images/PortSaplaya.jpg'); */
+            /* Replace with your map */
+            /* background-size: cover; */
+            /* background-size: auto; */
+            border: 1px solid #000;
+        }
+
+        #dot {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: red;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        #log {
+            width: 500px;
+            height: 100px;
+            margin-top: 20px;
+            resize: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>My Location on Map</h1>
+    <div id="map">
+        <img src="images/PortSaplaya.jpg">
+        <div id="dot"></div>
+    </div>
+
+    <textarea id="log" readonly placeholder="GPS messages will appear here..."></textarea>
+
+    <script>
+        // ========================
+        // Simple asynchronous wait
+        // ------------------------
+        async function doWait(waitTime) {
+            let myPromise = new Promise(function (myResolve, myReject) {
+                setTimeout(function () { myResolve(true) }, waitTime);
+            })
+            await myPromise;
+        }
+    </script>
+    <script>
+        window.addEventListener('load', () => {
+            showLocation();
+        });
+
+
+        const map = document.getElementById('map');
+        const dot = document.getElementById('dot');
+        const logBox = document.getElementById('log');
+
+        // Map corners
+        const topLeft = { lat: 39.513577181689215, lng: -0.32616035132321264 };
+        const bottomRight = { lat: 39.50337276945721, lng: -0.31962842588776047 };
+
+        function logMessage(message) {
+            // Append message to textarea and scroll to bottom
+            logBox.value += message + "\n";
+            logBox.scrollTop = logBox.scrollHeight;
+            console.log(message); // still log to console
+        }
+
+        function getLocationOnMap(lat, lng) {
+            const mapWidth = map.offsetWidth;
+            const mapHeight = map.offsetHeight;
+
+            // Linear interpolation to convert GPS to pixel coordinates
+            const x = ((lng - topLeft.lng) / (bottomRight.lng - topLeft.lng)) * mapWidth;
+            const y = ((lat - topLeft.lat) / (bottomRight.lat - topLeft.lat)) * mapHeight;
+
+            return { x, y };
+        }
+
+        function showLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    const { latitude, longitude } = position.coords;
+
+                    // Print GPS position to textarea
+                    logMessage(`Current Position -> Latitude: ${latitude}, Longitude: ${longitude}`);
+
+                    const { x, y } = getLocationOnMap(latitude, longitude);
+                    dot.style.left = `${x}px`;
+                    dot.style.top = `${y}px`;
+                    dot.style.display = 'block';
+                }, (error) => {
+                    logMessage("Error getting location: " + error.message);
+                });
+            } else {
+                logMessage("Geolocation is not supported by this browser.");
+            }
+        }
+
+        showCurrentLocation();
+        async function showCurrentLocation() {
+            for(let i=0; i<10000000;i++) {
+                showLocation();
+                await doWait(5000);
+
+            }
+            
+        }
+
+    </script>
+
+    
+
+</body>
+
+</html>
