@@ -21,10 +21,25 @@
             position: absolute;
             width: 12px;
             height: 12px;
-            background-color: red;
+            background-color: green;
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            display: none;
+            opacity: 1;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0.5;
+            }
         }
 
         #log {
@@ -111,17 +126,17 @@
 
         showCurrentLocation();
         async function showCurrentLocation() {
-            for(let i=0; i<10000000;i++) {
+            for (let i = 0; i < 10000000; i++) {
                 showLocation();
                 await doWait(5000);
 
             }
-            
+
         }
 
     </script>
 
-    
+
 
 </body>
 
