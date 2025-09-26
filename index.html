@@ -67,6 +67,52 @@
             margin-top: 20px;
             resize: none;
         }
+
+        .dot {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: blue;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .label {
+            position: absolute;
+            font-size: 14px;
+            color: black;
+            margin-left: 10px;
+            cursor: pointer;
+            white-space: nowrap;
+            transform: translateY(-50%); /* vertically center label with dot */
+        }
+
+        #infoBox {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 250px;
+            padding: 15px;
+            background: white;
+            border: 1px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+        }
+
+        #infoBox h3 {
+            margin: 0 0 10px 0;
+        }
+
+        #infoBox .close {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -77,6 +123,12 @@
         <img src="images/PortSaplaya.jpg">
         <div id="dot"></div>
     </div>
+    <div id="infoBox">
+        <span class="close" onclick="hideInfo()">✖</span>
+        <h3 id="infoTitle"></h3>
+        <p id="infoDesc"></p>
+    </div>
+
 
     <textarea id="log" readonly placeholder="GPS messages will appear here..."></textarea>
 
@@ -156,6 +208,68 @@
 
         }
 
+    </script>
+    <script>
+        // const map = document.getElementById('map');
+        const infoBox = document.getElementById('infoBox');
+        const infoTitle = document.getElementById('infoTitle');
+        const infoDesc = document.getElementById('infoDesc');
+
+        // Define map bounds
+        // const topLeft = { lat: 39.510468490311084, lng: -0.321962205442235 };
+        // const bottomRight = { lat: 39.50959638289184, lng: -0.3211428699901238 };
+
+        // Example array of GPS positions
+        const locations = [
+            { lat: 39.5102, lng: -0.3217, title: "Point A", description: "This is the first location." },
+            { lat: 39.5100, lng: -0.3215, title: "Point B", description: "This is the second location." },
+            { lat: 39.5098, lng: -0.3213, title: "Point C", description: "This is the third location." }
+        ];
+
+        function getLocationOnMap(lat, lng) {
+            const mapWidth = map.offsetWidth;
+            const mapHeight = map.offsetHeight;
+
+            const x = ((lng - topLeft.lng) / (bottomRight.lng - topLeft.lng)) * mapWidth;
+            const y = ((lat - topLeft.lat) / (bottomRight.lat - topLeft.lat)) * mapHeight;
+
+            return { x, y };
+        }
+
+        function showInfo(location) {
+            infoTitle.textContent = location.title;
+            infoDesc.textContent = location.description;
+            infoBox.style.display = 'block';
+        }
+
+        function hideInfo() {
+            infoBox.style.display = 'none';
+        }
+
+        function drawLocations() {
+            locations.forEach(loc => {
+                const { x, y } = getLocationOnMap(loc.lat, loc.lng);
+
+                // Create dot
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                dot.style.left = `${x}px`;
+                dot.style.top = `${y}px`;
+                dot.addEventListener('click', () => showInfo(loc));
+                map.appendChild(dot);
+
+                // Create label
+                const label = document.createElement('div');
+                label.className = 'label';
+                label.style.left = `${x + 10}px`; // offset a bit to the right
+                label.style.top = `${y}px`;
+                label.textContent = loc.title;
+                label.addEventListener('click', () => showInfo(loc));
+                map.appendChild(label);
+            });
+        }
+
+        drawLocations();
     </script>
 
 
