@@ -21,13 +21,15 @@
             position: absolute;
             width: 12px;
             height: 12px;
-            background-color: green;
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            opacity: 1;
-            animation: pulse 1.5s infinite;
+            background-color: green;
+
+            /* Two animations: pulsing + timer */
+            animation: pulse 1.5s infinite, stopAfter 5s forwards;
         }
 
+        /* Pulse size + opacity */
         @keyframes pulse {
 
             0%,
@@ -41,6 +43,23 @@
                 opacity: 0.5;
             }
         }
+
+        /* After 5s → lock color amber */
+        @keyframes stopAfter {
+            0% {
+                background-color: green;
+            }
+
+            99% {
+                background-color: green;
+            }
+
+            100% {
+                background-color: orange;
+            }
+        }
+
+
 
         #log {
             width: 500px;
@@ -73,9 +92,9 @@
         }
     </script>
     <script>
-        window.addEventListener('load', () => {
-            showLocation();
-        });
+        // window.addEventListener('load', () => {
+        //     showLocation();
+        // });
 
 
         const map = document.getElementById('map');
@@ -116,6 +135,9 @@
                     dot.style.left = `${x}px`;
                     dot.style.top = `${y}px`;
                     dot.style.display = 'block';
+                    dot.style.animation = 'none';
+                    void dot.offsetWidth;
+                    dot.style.animation = 'pulse 1.5s infinite, stopAfter 5s forwards';
                 }, (error) => {
                     logMessage("Error getting location: " + error.message);
                 });
@@ -128,7 +150,7 @@
         async function showCurrentLocation() {
             for (let i = 0; i < 10000000; i++) {
                 showLocation();
-                await doWait(5000);
+                await doWait(10000);
 
             }
 
