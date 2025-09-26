@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Port Saplaya</title>
+    <script src="include/MapLocation.js"></script>
+    <script src="include/landmarks.js"></script>
+    
+    <link rel="stylesheet" href="include/style.css">
+    <style>
+        #map {
+            position: relative;
+            width: 364px;
+            height: 727px;
+            border: 1px solid #000;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <h1>Port Saplaya</h1>
+    <a class="button" href="valencia.html">Valencia</a>
+    <a class="button" href="valencia-oldtown.html">Valencia Old Town</a>
+    <a class="button" href="portsaplaya.html">Port Saplaya</a>
+    <br><br>
+    <div id="map">
+        <img src="images/PortSaplaya.jpg">
+        <div id="dot"></div>
+    </div>
+    <div id="infoBox">
+        <span class="close" onclick="hideInfo()">✖</span>
+        <h3 id="infoTitle"></h3>
+        <p id="infoDesc"></p>
+    </div>
+
+
+    <textarea id="log" readonly placeholder="GPS messages will appear here..."></textarea>
+
+    <script src="include/common.js"></script>
+    <script>
+
+        
+
+        // Map corners
+        const topLeft = { lat: 39.513577181689215, lng: -0.32616035132321264 };
+        const bottomRight = { lat: 39.50337276945721, lng: -0.31962842588776047 };
+
+        const mapLocation = new MapLocation(topLeft, bottomRight, 364, 727);
+
+        showCurrentLocation();
+        
+    </script>
+    
+    <script>
+        // const map = document.getElementById('map');
+        
+
+        drawLocations();
+    </script>
+
+    
+
+</body>
+
+</html>

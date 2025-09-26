@@ -1,0 +1,115 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.button {
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 6px;
+}
+
+
+
+#dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background-color: green;
+
+    /* Two animations: pulsing + timer */
+    animation: pulse 1.5s infinite, stopAfter 5s forwards;
+}
+
+/* Pulse size + opacity */
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0.5;
+    }
+}
+
+/* After 5s → lock color amber */
+@keyframes stopAfter {
+    0% {
+        background-color: green;
+    }
+
+    99% {
+        background-color: green;
+    }
+
+    100% {
+        background-color: orange;
+    }
+}
+
+
+
+#log {
+    width: 500px;
+    height: 100px;
+    margin-top: 20px;
+    resize: none;
+}
+
+.dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: blue;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.label {
+    position: absolute;
+    font-size: 14px;
+    color: white;
+    padding: 3px;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-left: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+    transform: translateY(-50%);
+    /* vertically center label with dot */
+}
+
+#infoBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    background: white;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 1000;
+}
+
+#infoBox h3 {
+    margin: 0 0 10px 0;
+}
+
+#infoBox .close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
