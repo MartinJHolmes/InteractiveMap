@@ -1,5 +1,10 @@
 const locations = [
-    { lat: 39.50976772508571, lng: -0.32156363413368727, title: "Information Point", description: "This is the first location." },
-    { lat: 39.47554381798084, lng: -0.3754577626513921, title: "Catedral", description: "<p>Built 1238 by King James I of Aragon.</p><p>The Holy Gail (Santo Cáliz) was brought to Rome by Saint Peter. It was moved to Spain for safe keeping, but had to be kept hidden from the Moores. After being hidden in various monasteries it was transferred to Zaragoza in 1399 by King Martin I. Later King Alfonso brought it to Valencia in 1437. Both Pope John Paul II (1982) and Pope Benefict XVI (2006) used it in Mass in Valencia.</p>" },
-    { lat: 39.47358749015811, lng: -0.3790538233753074, title: "Mercat Central", description: "Built a long time ago" }
+    { lat: 39.50976772508571, lng: -0.32156363413368727, title: "Port Saplaya", description: "Built in the 1970's and 1980's. Initially it was nicknamed as Cheap Venice by its critics. The proposed site was a stretch of fertile farmland." },
+    { lat: 39.47554381798084, lng: -0.3754577626513921, title: "Catedral", description: "<p>Built 1238 by King James I of Aragon.</p><p>The Holy Grail (Santo Cáliz) was brought to Rome by Saint Peter. It was moved to Spain for safe keeping, but had to be kept hidden from the Moores. After being hidden in various monasteries it was transferred to Zaragoza in 1399 by King Martin I. Later King Alfonso brought it to Valencia in 1437. Both Pope John Paul II (1982) and Pope Benefict XVI (2006) used it in Mass in Valencia.</p>" },
+    { lat: 39.47358749015811, lng: -0.3790538233753074, title: "Mercat Central", description: "Built in 1928 to replace the older markets dating back to medieval times" },
+    { lat: 39.45591687345348, lng: -0.35041396549970266, title: "City of Science and Arts", description: "<p>Designed by Santiago Calatrava. Construction started in 1991 and completed in 2009. The initial budget was 310 million but cost 4 times that amount.</p>" },
+    { lat: 39.470673562220156, lng: -0.38528829691879635, title: "Metro System", description: "<p>Lines 1 and 2 were completed in 1995. Line 5 to the airport was completed in 2007. Line 10 was opened in 2022.</p>" },
+    { lat: 39.46990545665987, lng: -0.3770646800087009, title: "Town Hall", description: "<p>Made from two building. The oldest was completed in 1758. The current façade comes from reforms between 1906 and 1930.</p>" },
+    { lat: 39.4667745096882, lng: -0.3761433304086719, title: "Bull Ring", description: "<p>What built between 1850 and 1860. It can seat around 12,000 spectators. It is still in use but only during major festivals.</p>" },
+    { lat: 39.00000000000001, lng: -0.0000000000000001, title: "", description: "" },
 ];
