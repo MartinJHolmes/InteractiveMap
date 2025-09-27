@@ -1,6 +1,6 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding: 30px;
+    padding: 3px 30px;
 }
 
 h1 {
@@ -16,10 +16,16 @@ h3 {
     font-size: medium;
 }
 
+.small-text {
+    font-size: smaller;
+    color: #333;
+}
+
 .button-container {
     display: flex;
     /* align-self: center; */
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .custom-btn {

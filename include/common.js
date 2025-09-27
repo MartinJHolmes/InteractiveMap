@@ -71,6 +71,7 @@ function hideInfo() {
 
 function drawLocations() {
     locations.forEach(loc => {
+        const dotRadius = 0;
         const point = mapLocation.getLocationOnMap(loc.lat, loc.lng);
         if (!point) {
             return;
@@ -79,8 +80,8 @@ function drawLocations() {
         // Create dot
         const dot = document.createElement('div');
         dot.className = 'dot';
-        dot.style.left = `${x}px`;
-        dot.style.top = `${y}px`;
+        dot.style.left = `${x-dotRadius}px`;
+        dot.style.top = `${y-dotRadius}px`;
         dot.addEventListener('click', () => showInfo(loc));
         map.appendChild(dot);
 
@@ -88,7 +89,7 @@ function drawLocations() {
         const label = document.createElement('div');
         label.className = 'label';
         label.style.left = `${x + 5}px`; // offset a bit to the right
-        label.style.top = `${y}px`;
+        label.style.top = `${y-dotRadius}px`;
         label.textContent = loc.title;
         label.addEventListener('click', () => showInfo(loc));
         map.appendChild(label);
