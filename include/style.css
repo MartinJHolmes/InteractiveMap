@@ -5,6 +5,7 @@ body {
 
 h1 {
     text-align: center;
+    margin: 10px;
 }
 
 h2 {
@@ -18,6 +19,7 @@ h3 {
 
 .small-text {
     font-size: smaller;
+    font-style: italic;
     color: #333;
 }
 
@@ -30,8 +32,8 @@ h3 {
 
 .custom-btn {
     display: inline-block;
-    padding: 0.5rem 1rem;
-    margin: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    margin: 0.25rem;
     font-size: 1rem;
     font-weight: 400;
     text-align: center;

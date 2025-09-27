@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valencia Old Town</title>
+    <title>Valencia Old Town North</title>
     <script src="include/MapLocation.js"></script>
     <script src="include/landmarks.js"></script>
 
@@ -12,8 +12,8 @@
     <style>
         #map {
             position: relative;
-            width: 880px;
-            height: 844px;
+            width: 733px;
+            height: 783px;
             border: 1px solid #000;
         }
 
@@ -31,7 +31,7 @@
         <h3 id="infoTitle"></h3>
         <p id="infoDesc"></p>
     </div>
-    <h1>Valencia Old Town</h1>
+    <h1>Valencia Old Town North</h1>
     <div class="button-container">
         <a class="custom-btn" href="index.html">Home Page</a>
         <a class="custom-btn" href="valencia.html">Valencia</a>
@@ -40,7 +40,7 @@
         <a class="custom-btn" href="portsaplaya.html">Port Saplaya</a>
     </div>
     <div id="map">
-        <img src="images/Valencia-OldTown.jpg">
+        <img src="images/Valencia-OldTown-North.jpg">
         <div id="dot"></div>
     </div>
     
@@ -54,10 +54,10 @@
 
 
         // Map corners
-        const topLeft = { lat: 39.483261068597244, lng: -0.3892695502956495 };
-        const bottomRight = { lat: 39.46374828519189, lng: -0.3625953669880743 };
+        const topLeft = { lat: 39.47984233446074, lng: -0.38100917046648236 };
+        const bottomRight = { lat: 39.47438970469787, lng: -0.37436905527495845 };
 
-        const mapLocation = new MapLocation(topLeft, bottomRight, 880, 844);
+        const mapLocation = new MapLocation(topLeft, bottomRight, 733, 783);
 
         showCurrentLocation();
 
