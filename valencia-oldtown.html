@@ -16,11 +16,21 @@
             height: 844px;
             border: 1px solid #000;
         }
+
+        #infoBox {
+            left: 400px;
+            top: 400px;
+        }
     </style>
 </head>
 
 <body>
 
+    <div id="infoBox">
+        <span class="close" onclick="hideInfo()">✖</span>
+        <h3 id="infoTitle"></h3>
+        <p id="infoDesc"></p>
+    </div>
     <h1>Valencia Old Town</h1>
     <a class="button" href="valencia.html">Valencia</a>
     <a class="button" href="valencia-oldtown.html">Valencia Old Town</a>
@@ -30,11 +40,7 @@
         <img src="images/Valencia-OldTown.jpg">
         <div id="dot"></div>
     </div>
-    <div id="infoBox">
-        <span class="close" onclick="hideInfo()">✖</span>
-        <h3 id="infoTitle"></h3>
-        <p id="infoDesc"></p>
-    </div>
+    
 
 
     <textarea id="log" readonly placeholder="GPS messages will appear here..."></textarea>
