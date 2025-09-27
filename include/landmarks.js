@@ -1,5 +1,5 @@
 const locations = [
     { lat: 39.50976772508571, lng: -0.32156363413368727, title: "Information Point", description: "This is the first location." },
-    { lat: 39.47554381798084, lng: -0.3754577626513921, title: "Catedral", description: "Built a long time ago" },
+    { lat: 39.47554381798084, lng: -0.3754577626513921, title: "Catedral", description: "<p>Built 1238 by King James I of Aragon.</p><p>The Holy Gail (Santo Cáliz) was brought to Rome by Saint Peter. It was moved to Spain for safe keeping, but had to be kept hidden from the Moores. After being hidden in various monasteries it was transferred to Zaragoza in 1399 by King Martin I. Later King Alfonso brought it to Valencia in 1437. Both Pope John Paul II (1982) and Pope Benefict XVI (2006) used it in Mass in Valencia.</p>" },
     { lat: 39.47358749015811, lng: -0.3790538233753074, title: "Mercat Central", description: "Built a long time ago" }
 ];
