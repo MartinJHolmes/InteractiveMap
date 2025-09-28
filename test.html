@@ -8,7 +8,7 @@
   <script src="include/MapLocation.js"></script>
   <script src="include/landmarks.js"></script>
 
-  <!-- <link rel="stylesheet" href="include/style.css"> -->
+  <link rel="stylesheet" href="include/style.css">
   <style>
     body {
       border: 1px solid green;
@@ -68,7 +68,7 @@
       const y = window.scrollY; // vertical
 
       console.log(`Scroll position → X: ${x}, Y: ${y}`);
-      log(`Scroll position → X: ${x}, Y: ${y}`);
+      logMessage(`Scroll position → X: ${x}, Y: ${y}`);
 
       document.querySelectorAll('*').forEach(el => {
         if (el.scrollHeight > el.clientHeight || el.scrollWidth > el.clientWidth) {
