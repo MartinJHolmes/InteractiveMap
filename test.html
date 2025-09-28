@@ -66,6 +66,8 @@
       // Get current scroll position
       const x = window.scrollX; // horizontal
       const y = window.scrollY; // vertical
+      const scrollY = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 9999;
+      logMessage(`ScrollY: ${scrollY}`);
 
       console.log(`Scroll position → X: ${x}, Y: ${y}`);
       logMessage(`Scroll position → X: ${x}, Y: ${y}`);
