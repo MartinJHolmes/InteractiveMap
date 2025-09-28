@@ -4,55 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Valencia</title>
-  <script src="include/MapLocation.js"></script>
-  <script src="include/landmarks.js"></script>
+  <title>Test</title>
 
-  <link rel="stylesheet" href="include/style.css">
+
   <style>
     body {
       border: 1px solid green;
     }
 
-    #map {
-      position: relative;
-      width: 1216px;
-      height: 765px;
-      border: 1px solid #000;
+    .big-div {
+      width: 1000px;
+      height: 2000px;
+      background-color: blue;
     }
 
-    @media not all and (min-width: 780px) {
-      #infoBox {
-        max-width: 220px;
-      }
-    }
-
-    #infoBox {
-      position: absolute;
-      margin: 0 auto;
-      clear: both;
-      min-width: 220px;
-
-
-      /* position: fixed;
-      width: 250px;
-      top: 50%;
-      left: 50%;
-      width: 250px;
-      transform: translate(-50%, -50%); */
-      padding: 15px;
-      background: pink;
-      border: 1px solid #333;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      /* display: none; */
-      z-index: 1000;
-    }
-
-
-
-    #map {
-      border: 1px solid black;
+    #log {
+      width: 500px;
+      height: 50px;
     }
   </style>
 </head>
@@ -62,46 +30,81 @@
   <button onclick="logScroll()">Log Scroll Position</button>
 
   <script>
-    function logScroll() {
-      // Get current scroll position
-      const x = window.scrollX; // horizontal
-      const y = window.scrollY; // vertical
-      const scrollY = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 9999;
-      logMessage(`ScrollY: ${scrollY}`);
+    function getScrollY() {
+      return window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    }
+
+    function getScrollX() {
+      return window.scrollX || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+    }
+
+    function logScroll99() {
+      const x = getScrollX();
+      const y = getScrollY();
 
       console.log(`Scroll position → X: ${x}, Y: ${y}`);
-      logMessage(`Scroll position → X: ${x}, Y: ${y}`);
+      document.getElementById("log").value = `Scroll position → X: ${x}, Y: ${y}`;
+    }
 
-      document.querySelectorAll('*').forEach(el => {
-        if (el.scrollHeight > el.clientHeight || el.scrollWidth > el.clientWidth) {
-          console.log("Scrollable:", el);
-        }
-      });
+    function logScroll() {
+      moveInfoBoxToCentre();
+      // const visual = window.visualViewport;
+      // const infoBox = document.getElementById('infoBox');
+
+      // if (visual) {
+      //   console.log("Visual viewport scroll:");
+      //   console.log("x:", visual.pageLeft, "y:", visual.pageTop);
+      //   document.getElementById("log").value = `Visual viewport → X: ${visual.pageLeft}, Y: ${visual.pageTop}`;
+      //   infoBox.style.top = `${getVisualViewportCenter().y}px`;
+      //   infoBox.style.left = `${getVisualViewportCenter().x}px`;
+      // } else {
+      //   console.log("Fallback:");
+      //   console.log("x:", window.scrollX, "y:", window.scrollY);
+      // }
+    }
+
+    function moveInfoBoxToCentre() {
+      const infoBox = document.getElementById('infoBox');
+      // if (!window.visualViewport) {
+      //   // fallback: approximate with layout viewport
+      //   const x = (window.scrollX || document.documentElement.scrollLeft || document.body.scrollLeft || 0) + window.innerWidth / 2;
+      //   const y = (window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0) + window.innerHeight / 2;
+      //   return { x, y };
+      // }
+
+      const vv = window.visualViewport;
+      const centerX = vv.pageLeft + vv.width / 2;
+      const centerY = vv.pageTop + vv.height / 2;
+      infoBox.style.top = `${centerY}px`;
+      infoBox.style.left = `${centerX}px`;
     }
   </script>
 
-  <h1>Valencia</h1>
-  <div class="button-container">
-    <a class="custom-btn" href="index.html">Home Page</a>
-    <a class="custom-btn" href="valencia.html">Valencia</a>
-    <a class="custom-btn" href="valencia-oldtown.html">Valencia Old Town</a>
-    <a class="custom-btn" href="portsaplaya.html">Port Saplaya</a>
-  </div>
-  <div id="map">
-    <img src="images/Valencia.jpg">
-    <div id="dot"></div>
-  </div>
-  <!-- <div id="infoBox">
-    <span class="close" onclick="hideInfo()">✖</span>
-    <h3 id="infoTitle"></h3>
-    <p id="infoDesc"></p>
-  </div> -->
+
 
   <style>
     .test-container {
       display: flex;
     }
+
+    #infoBox {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      width: 200px;
+      height: 50px;
+      background-color: aqua;
+      z-index: 1000;
+    }
   </style>
+
+  <div id="infoBox">
+    <span class="close" onclick="hideInfo()">✖</span>
+    <h3 id="infoTitle"></h3>
+    <p id="infoDesc"></p>
+  </div>
+
+  <div class="big-div"></div>
 
   <textarea id="log" readonly placeholder="GPS messages will appear here..."></textarea>
   <div class="test-container">
@@ -115,27 +118,6 @@
   </div>
 
   <script src="include/common.js"></script>
-  <script>
-
-
-
-    // Map corners
-    const topLeft = { lat: 39.517613664693144, lng: -0.4889598892509934 };
-    const bottomRight = { lat: 39.41638957400675, lng: -0.2798250336621361 };
-
-    const mapLocation = new MapLocation(topLeft, bottomRight, 1216, 765);
-
-    // showCurrentLocation();
-
-  </script>
-
-  <script>
-    // const map = document.getElementById('map');
-
-
-    // drawLocations();
-  </script>
-
 
 
 </body>

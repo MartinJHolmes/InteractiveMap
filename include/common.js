@@ -63,6 +63,7 @@ function showInfo(location) {
     infoTitle.textContent = location.title;
     infoDesc.innerHTML = location.description;
     infoBox.style.display = 'block';
+    moveInfoBoxToCentre();
 }
 
 function hideInfo() {
@@ -80,8 +81,8 @@ function drawLocations() {
         // Create dot
         const dot = document.createElement('div');
         dot.className = 'dot';
-        dot.style.left = `${x-dotRadius}px`;
-        dot.style.top = `${y-dotRadius}px`;
+        dot.style.left = `${x - dotRadius}px`;
+        dot.style.top = `${y - dotRadius}px`;
         dot.addEventListener('click', () => showInfo(loc));
         map.appendChild(dot);
 
@@ -89,9 +90,19 @@ function drawLocations() {
         const label = document.createElement('div');
         label.className = 'label';
         label.style.left = `${x + 5}px`; // offset a bit to the right
-        label.style.top = `${y-dotRadius}px`;
+        label.style.top = `${y - dotRadius}px`;
         label.textContent = loc.title;
         label.addEventListener('click', () => showInfo(loc));
         map.appendChild(label);
     });
+}
+
+function moveInfoBoxToCentre() {
+    const infoBox = document.getElementById('infoBox');
+
+    const vv = window.visualViewport;
+    const centerX = vv.pageLeft + vv.width / 2;
+    const centerY = vv.pageTop + vv.height / 2;
+    infoBox.style.top = `${centerY - 100}px`;
+    infoBox.style.left = `${centerX - 125}px`;
 }
