@@ -32,7 +32,7 @@
       margin: 0 auto;
       clear: both;
       min-width: 220px;
-      
+
 
       /* position: fixed;
       width: 250px;
@@ -59,6 +59,25 @@
 
 <body>
 
+  <button onclick="logScroll()">Log Scroll Position</button>
+
+  <script>
+    function logScroll() {
+      // Get current scroll position
+      const x = window.scrollX; // horizontal
+      const y = window.scrollY; // vertical
+
+      console.log(`Scroll position → X: ${x}, Y: ${y}`);
+      log(`Scroll position → X: ${x}, Y: ${y}`);
+
+      document.querySelectorAll('*').forEach(el => {
+        if (el.scrollHeight > el.clientHeight || el.scrollWidth > el.clientWidth) {
+          console.log("Scrollable:", el);
+        }
+      });
+    }
+  </script>
+
   <h1>Valencia</h1>
   <div class="button-container">
     <a class="custom-btn" href="index.html">Home Page</a>
@@ -70,14 +89,28 @@
     <img src="images/Valencia.jpg">
     <div id="dot"></div>
   </div>
-  <div id="infoBox">
+  <!-- <div id="infoBox">
     <span class="close" onclick="hideInfo()">✖</span>
     <h3 id="infoTitle"></h3>
     <p id="infoDesc"></p>
-  </div>
+  </div> -->
 
+  <style>
+    .test-container {
+      display: flex;
+    }
+  </style>
 
   <textarea id="log" readonly placeholder="GPS messages will appear here..."></textarea>
+  <div class="test-container">
+    <button onclick="logScroll()">Log Scroll Position</button>
+    <button onclick="logScroll()">Log Scroll Position</button>
+    <button onclick="logScroll()">Log Scroll Position</button>
+    <button onclick="logScroll()">Log Scroll Position</button>
+    <button onclick="logScroll()">Log Scroll Position</button>
+    <button onclick="logScroll()">Log Scroll Position</button>
+    <button onclick="logScroll()">Log Scroll Position</button>
+  </div>
 
   <script src="include/common.js"></script>
   <script>
@@ -90,7 +123,7 @@
 
     const mapLocation = new MapLocation(topLeft, bottomRight, 1216, 765);
 
-    showCurrentLocation();
+    // showCurrentLocation();
 
   </script>
 
@@ -98,7 +131,7 @@
     // const map = document.getElementById('map');
 
 
-    drawLocations();
+    // drawLocations();
   </script>
 
 
