@@ -17,6 +17,46 @@ h3 {
     font-size: medium;
 }
 
+.bg-green {
+    background-color: green;
+}
+
+.bg-orange {
+    background-color: orange;
+}
+
+.bg-blue {
+    background-color: blue;
+} 
+
+multi-select {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+multi-select b {
+    white-space: nowrap;
+    margin: 5px;
+}
+
+multi-select div {
+    display: flex;
+}
+
+multi-select label {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-right: 10px;
+}
+
+multi-select label label {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
 .small-text {
     font-size: smaller;
     font-style: italic;
@@ -128,7 +168,7 @@ h3 {
     position: absolute;
     width: 12px;
     height: 12px;
-    background-color: blue;
+    /* background-color: blue; */
     border-radius: 50%;
     transform: translate(-50%, -50%);
     cursor: pointer;

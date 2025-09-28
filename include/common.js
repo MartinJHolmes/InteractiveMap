@@ -80,7 +80,11 @@ function drawLocations() {
         const { x, y } = point;
         // Create dot
         const dot = document.createElement('div');
-        dot.className = 'dot';
+        let dotColour = "bg-blue";
+        if(loc.cat) {
+            dotColour = dotColours.find(item => item.cat === loc.cat).dotColour;
+        }
+        dot.className = `dot ${dotColour}`;
         dot.style.left = `${x - dotRadius}px`;
         dot.style.top = `${y - dotRadius}px`;
         dot.addEventListener('click', () => showInfo(loc));
@@ -108,5 +112,5 @@ function moveInfoBoxToCentre() {
 }
 
 function populateMapLinks() {
-    document.getElementsByClassName('button-container').item(0).innerHTML = data;
+    document.getElementsByClassName('button-container').item(0).innerHTML = mapLinks;
 }
