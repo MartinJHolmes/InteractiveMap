@@ -7,6 +7,7 @@
     <title>Valencia Old Town</title>
     <script src="include/MapLocation.js"></script>
     <script src="include/landmarks.js"></script>
+    <script src="include/map-links.js"></script>
 
     <link rel="stylesheet" href="include/style.css">
     <style>
@@ -32,13 +33,7 @@
         <p id="infoDesc"></p>
     </div>
     <h1>Valencia Old Town</h1>
-    <div class="button-container">
-        <a class="custom-btn" href="index.html">Home Page</a>
-        <a class="custom-btn" href="valencia.html">Valencia</a>
-        <a class="custom-btn" href="valencia-oldtown.html">Valencia Old Town</a>
-        <a class="custom-btn" href="valencia-oldtown-north.html">Valencia Old Town North</a>
-        <a class="custom-btn" href="portsaplaya.html">Port Saplaya</a>
-    </div>
+    <div class="button-container"></div>
     <div id="map">
         <img src="images/Valencia-OldTown.jpg">
         <div id="dot"></div>
@@ -50,7 +45,7 @@
 
     <script src="include/common.js"></script>
     <script>
-
+        populateMapLinks();
 
 
         // Map corners

@@ -106,3 +106,7 @@ function moveInfoBoxToCentre() {
     infoBox.style.top = `${centerY - 100}px`;
     infoBox.style.left = `${centerX - 125}px`;
 }
+
+function populateMapLinks() {
+    document.getElementsByClassName('button-container').item(0).innerHTML = data;
+}
