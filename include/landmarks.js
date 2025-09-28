@@ -20,5 +20,5 @@ const locations = [
     { lat: 39.00000000000001, lng: -0.0000000000000001, title: "", description: "" },
     { lat: 39.00000000000001, lng: -0.0000000000000001, title: "", description: "" },
     { lat: 39.00000000000001, lng: -0.0000000000000001, title: "", description: "" },
-    { lat: 39.00000000000001, lng: -0.0000000000000001, title: "", description: "" },
+    { lat: 44.072330049911834, lng: 10.483397530000532, title: "Pizzeria Che Pizza", description: "Possibly the best pizzas in town." },
 ];

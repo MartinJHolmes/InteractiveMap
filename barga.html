@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barga</title>
+    <script src="include/MapLocation.js"></script>
+    <script src="include/landmarks.js"></script>
+
+    <link rel="stylesheet" href="include/style.css">
+    <style>
+        #map {
+            position: relative;
+            width: 976px;
+            height: 700px;
+            border: 1px solid #000;
+        }
+
+        #infoBox {
+            left: 600px;
+            top: 400px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Barga</h1>
+    <div class="button-container">
+        <a class="custom-btn" href="index.html">Home Page</a>
+        <a class="custom-btn" href="valencia.html">Valencia</a>
+        <a class="custom-btn" href="valencia-oldtown.html">Valencia Old Town</a>
+        <a class="custom-btn" href="valencia-oldtown-north.html">Valencia Old Town North</a>
+        <a class="custom-btn" href="portsaplaya.html">Port Saplaya</a>
+    </div>
+    <div id="map">
+        <img src="images/barga.jpg">
+        <div id="dot"></div>
+    </div>
+    <div id="infoBox">
+        <span class="close" onclick="hideInfo()">✖</span>
+        <h3 id="infoTitle"></h3>
+        <p id="infoDesc"></p>
+    </div>
+
+
+    <textarea id="log" readonly placeholder="GPS messages will appear here..."></textarea>
+
+    <script src="include/common.js"></script>
+    <script>
+
+
+
+        // Map corners
+        const topLeft = { lat: 44.08999809604668, lng: 10.45284241867615 };
+        const bottomRight = { lat: 44.06423887220344, lng: 10.503256181297578 };
+
+        const mapLocation = new MapLocation(topLeft, bottomRight, 976, 700);
+
+        showCurrentLocation();
+
+    </script>
+
+    <script>
+        // const map = document.getElementById('map');
+
+
+        drawLocations();
+    </script>
+
+
+
+</body>
+
+</html>
