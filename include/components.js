@@ -113,11 +113,73 @@ class MultiSelect2 extends HTMLElement {
   }
 }
 
-customElements.define('multi-select', MultiSelect2);
+// customElements.define('multi-select', MultiSelect2);
 
-// document.querySelector('multi-select').addEventListener('selection-change', e => {
-//     updateSelectedPersons(e.target);
-// });
+
+// MultiSelect
+class MultiSelect extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    const options = JSON.parse(this.getAttribute('options') || '[]');
+    const name = this.getAttribute('name') || 'Select Items';
+
+    if (this.rendered) return;
+    this.rendered = true;
+
+    this.innerHTML = `
+      <div class='title'>${name}</div>
+      <div class='option-container'></div>
+    `;
+
+    let optionsHtml = `<div class='option'><input type='checkbox' data-role='select-all'> <label>Select All</label></div>`;
+    options.forEach(opt => {
+      optionsHtml += `<div class='option'><input type='checkbox' value='${opt}'> <label>${opt}</label></div>`;
+    }) 
+    this.querySelector('.option-container').innerHTML = optionsHtml;
+
+    const checkboxes = this.querySelectorAll('input[type="checkbox"]:not([data-role="select-all"])');
+    const selectAll = this.querySelector('[data-role="select-all"]');
+
+    let suppressDispatch = false;
+
+    const updateAll = () => {
+      suppressDispatch = true;
+      checkboxes.forEach(cb => cb.checked = selectAll.checked);
+      suppressDispatch = false;
+      this.dispatchSelection();
+    };
+
+    const updateSelectAll = () => {
+      if (!suppressDispatch) {
+        const allChecked = [...checkboxes].every(cb => cb.checked);
+        selectAll.checked = allChecked;
+        this.dispatchSelection();
+      }
+    };
+
+    checkboxes.forEach(cb => cb.addEventListener('change', updateSelectAll));
+    selectAll.addEventListener('change', updateAll);
+  }
+
+  dispatchSelection() {
+    this.dispatchEvent(new CustomEvent('selection-change', {
+      bubbles: true,
+      detail: this.value
+    }));
+  }
+
+  get value() {
+    const checkboxes = this.querySelectorAll('input[type="checkbox"]:not([data-role="select-all"])');
+    return [...checkboxes]
+      .filter(cb => cb.checked)
+      .map(cb => cb.value);
+  }
+}
+
+customElements.define('multi-select', MultiSelect);
 
 
 class StopWatch extends HTMLElement {
@@ -412,5 +474,80 @@ customElements.define('fancy-stopwatch', StopWatch);
 
 
 // customElements.define('test-phrase', TestPhrase);
+
+class CategoryIcon extends HTMLElement {
+  static get observedAttributes() {
+    return ['category', 'color'];
+  }
+
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+
+  attributeChangedCallback() {
+    this.render();
+  }
+
+  render() {
+    const category = this.getAttribute('category') || '❓';
+    const color = this.getAttribute('color') || '#3498db';
+
+    this.shadowRoot.innerHTML = `
+      <style>
+        .pin {
+          position: relative;
+          width: 25px;
+          height: 25px;
+          background: ${color};
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        /* Adjusted pointer */
+        .pin::after {
+          content: "";
+          position: absolute;
+          bottom: -3px;                 /* raise it closer */
+          left: 50%;
+          transform: translateX(-50%) rotate(45deg);
+          width: 12px;                   /* slightly smaller */
+          height: 12px;
+          background: ${color};
+        }
+
+        /* White inner circle */
+        .inner {
+          width: 16px;
+          height: 16px;
+          background: white;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 12px;
+          font-weight: bold;
+          color: black;
+          // color: ${color};
+          z-index: 1;
+        }
+      </style>
+      <div class="pin">
+        <div class="inner">${category}</div>
+      </div>
+    `;
+  }
+}
+
+customElements.define('category-icon', CategoryIcon);
+
+
+
 
 

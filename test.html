@@ -4,120 +4,162 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test</title>
+  <title>Valencia</title>
+  <script src="include/MapLocation.js"></script>
+  <script src="include/landmarks.js"></script>
+  <script src="include/map-links.js"></script>
+  <script src="include/components.js"></script>
+  <link rel="stylesheet" href="include/components.css">
 
-
+  <link rel="stylesheet" href="include/style.css">
   <style>
-    body {
-      border: 1px solid green;
+    #map {
+      position: relative;
+      width: 1216px;
+      height: 765px;
+      border: 1px solid #000;
     }
 
-    .big-div {
-      width: 1000px;
-      height: 2000px;
-      background-color: blue;
-    }
-
-    #log {
-      width: 500px;
-      height: 50px;
+    #infoBox {
+      left: 600px;
+      top: 400px;
     }
   </style>
 </head>
 
 <body>
 
-  <button onclick="logScroll()">Log Scroll Position</button>
+  <h1>Valencia</h1>
+  <div class="button-container"></div>
+  <!-- <div class="bg-green"> -->
+  <category-icon category="✔" color="green"></category-icon>
+  <category-icon category="🍴" color="green"></category-icon>
+  <category-icon category="🚻" color="green"></category-icon>
+  <category-icon category="🚹" color="green"></category-icon>
+  <category-icon category="🏛️" color="green"></category-icon>
+  <category-icon category="🚻" color="green"></category-icon>
+  <category-icon category="🚻" color="green"></category-icon>
+  <!-- </div> -->
 
-  <script>
-    function getScrollY() {
-      return window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    }
-
-    function getScrollX() {
-      return window.scrollX || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
-    }
-
-    function logScroll99() {
-      const x = getScrollX();
-      const y = getScrollY();
-
-      console.log(`Scroll position → X: ${x}, Y: ${y}`);
-      document.getElementById("log").value = `Scroll position → X: ${x}, Y: ${y}`;
-    }
-
-    function logScroll() {
-      moveInfoBoxToCentre();
-      // const visual = window.visualViewport;
-      // const infoBox = document.getElementById('infoBox');
-
-      // if (visual) {
-      //   console.log("Visual viewport scroll:");
-      //   console.log("x:", visual.pageLeft, "y:", visual.pageTop);
-      //   document.getElementById("log").value = `Visual viewport → X: ${visual.pageLeft}, Y: ${visual.pageTop}`;
-      //   infoBox.style.top = `${getVisualViewportCenter().y}px`;
-      //   infoBox.style.left = `${getVisualViewportCenter().x}px`;
-      // } else {
-      //   console.log("Fallback:");
-      //   console.log("x:", window.scrollX, "y:", window.scrollY);
-      // }
-    }
-
-    function moveInfoBoxToCentre() {
-      const infoBox = document.getElementById('infoBox');
-      // if (!window.visualViewport) {
-      //   // fallback: approximate with layout viewport
-      //   const x = (window.scrollX || document.documentElement.scrollLeft || document.body.scrollLeft || 0) + window.innerWidth / 2;
-      //   const y = (window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0) + window.innerHeight / 2;
-      //   return { x, y };
-      // }
-
-      const vv = window.visualViewport;
-      const centerX = vv.pageLeft + vv.width / 2;
-      const centerY = vv.pageTop + vv.height / 2;
-      infoBox.style.top = `${centerY}px`;
-      infoBox.style.left = `${centerX}px`;
-    }
-  </script>
-
-
-
+  <multi-select id="category" name="Select Category" options='["landmarks", "Toilets", "Restaurants"]'
+    onchange="getValue(this)"></multi-select>
+  <div id="category2"></div>
+  <div id="centreBox">Centre</div>
   <style>
-    .test-container {
-      display: flex;
-    }
-
-    #infoBox {
+    #centreBox {
       position: absolute;
-      top: 30px;
-      left: 30px;
+      top: 100px;
+      left: 100px;
       width: 200px;
       height: 50px;
-      background-color: aqua;
+      background-color: whitesmoke;
+      border: 1px solid black;
       z-index: 1000;
     }
   </style>
+  <script>
+    function getValue(el) {
+      alert(el.value);
+      document.getElementById('category2').innerHTML = `<multi-select id="category" name="Select Category" options='["Cars", "Boats"]'></multi-select>`;
+    }
+  </script>
 
+  <br><br>
+  <multi-select id="category" name="Select Category" options='["Landmarks", "Toilets", "Restaurants"]'></multi-select>
+  <br><br>
+  <style>
+    multi-select99 {
+      display: flex;
+    }
+
+    multi-select99 .title {
+      white-space: nowrap;
+      font-weight: bold;
+    }
+
+    multi-select99 .option-container {
+      display: flex;
+    }
+
+    multi-select99 .option {
+      display: flex;
+      flex-wrap: nowrap;
+      margin-left: 10px;
+    }
+  </style>
+
+  <multi-select99 id="category" name="Select Category"
+    options="[&quot;landmarks&quot;, &quot;Toilets&quot;, &quot;Restaurants&quot;]">
+    <div class="title">Select Category</div>
+    <div class="option-container">
+      <div class="option">
+        <input type="checkbox" data-role="select-all"> <label>Select All</label>
+      </div>
+      <div class="option">
+        <input type="checkbox" value="Landmarks"> <label>Landmarks</label>
+      </div>
+      <div class="option">
+        <input type="checkbox" value="Toilets"> <label>Toilets</label>
+      </div>
+      <div class="option">
+        <input type="checkbox" value="Restaurants"> <label>Restaurants</label>
+      </div>
+    </div>
+  </multi-select99>
+  <br><br>
+  <div id="map">
+    <img src="images/Valencia.jpg">
+    <div id="dot"></div>
+  </div>
   <div id="infoBox">
     <span class="close" onclick="hideInfo()">✖</span>
     <h3 id="infoTitle"></h3>
     <p id="infoDesc"></p>
   </div>
 
-  <div class="big-div"></div>
 
   <textarea id="log" readonly placeholder="GPS messages will appear here..."></textarea>
-  <div class="test-container">
-    <button onclick="logScroll()">Log Scroll Position</button>
-    <button onclick="logScroll()">Log Scroll Position</button>
-    <button onclick="logScroll()">Log Scroll Position</button>
-    <button onclick="logScroll()">Log Scroll Position</button>
-    <button onclick="logScroll()">Log Scroll Position</button>
-    <button onclick="logScroll()">Log Scroll Position</button>
-    <button onclick="logScroll()">Log Scroll Position</button>
-  </div>
 
   <script src="include/common.js"></script>
+  <script>
+
+    populateMapLinks();
+
+
+
+    // Map corners
+    const topLeft = { lat: 39.517613664693144, lng: -0.4889598892509934 };
+    const bottomRight = { lat: 39.41638957400675, lng: -0.2798250336621361 };
+
+    const mapLocation = new MapLocation(topLeft, bottomRight, 1216, 765);
+
+    showCurrentLocation();
+
+  </script>
+
+  <script>
+    // const map = document.getElementById('map');
+
+
+    drawLocations();
+  </script>
+
+  <script>
+    if (window.visualViewport) {
+      // Scroll event
+      window.visualViewport.addEventListener("scroll", () => {
+        console.log("Scrolled →", window.visualViewport.pageLeft, window.visualViewport.pageTop);
+        moveElementToCentre('centreBox');
+      });
+
+      // Zoom/resize event
+      window.visualViewport.addEventListener("resize", () => {
+        console.log("Zoomed/resized →", window.visualViewport.width, window.visualViewport.height,
+          "Scale:", window.visualViewport.scale);
+      });
+    }
+  </script>
+
 
 
 </body>

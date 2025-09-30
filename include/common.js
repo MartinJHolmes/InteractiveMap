@@ -111,6 +111,16 @@ function moveInfoBoxToCentre() {
     infoBox.style.left = `${centerX - 125}px`;
 }
 
+function moveElementToCentre(id) {
+    const infoBox = document.getElementById(id);
+
+    const vv = window.visualViewport;
+    const centerX = vv.pageLeft + vv.width / 2;
+    const centerY = vv.pageTop + vv.height / 2;
+    infoBox.style.top = `${centerY - 100}px`;
+    infoBox.style.left = `${centerX - 125}px`;
+}
+
 function populateMapLinks() {
     document.getElementsByClassName('button-container').item(0).innerHTML = mapLinks;
 }

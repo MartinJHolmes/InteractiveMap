@@ -1,0 +1,25 @@
+multi-select {
+    display: flex;
+    /* align-items: center; */
+    margin: 5px;
+}
+
+multi-select .title {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+multi-select .option-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+multi-select .option {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: 10px;
+}
+
+multi-select label {
+    white-space: nowrap;
+}

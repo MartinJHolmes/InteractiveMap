@@ -29,33 +29,6 @@ h3 {
     background-color: blue;
 } 
 
-multi-select {
-    display: flex;
-    align-items: center;
-    margin: 5px;
-}
-
-multi-select b {
-    white-space: nowrap;
-    margin: 5px;
-}
-
-multi-select div {
-    display: flex;
-}
-
-multi-select label {
-    display: flex;
-    flex-wrap: nowrap;
-    margin-right: 10px;
-}
-
-multi-select label label {
-    display: flex;
-    flex-wrap: nowrap;
-    margin-right: 10px;
-    white-space: nowrap;
-}
 
 .small-text {
     font-size: smaller;
