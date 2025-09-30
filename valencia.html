@@ -9,7 +9,7 @@
     <script src="include/landmarks.js"></script>
     <script src="include/map-links.js"></script>
     <script src="include/components.js"></script>
-    <script src="include/common.js"></script>
+    
 
     <link rel="stylesheet" href="include/style.css">
     <style>
@@ -33,7 +33,7 @@
     <info-box id="infoBox"></info-box>
 
     <textarea id="log" readonly placeholder="GPS messages will appear here..."></textarea>
-
+    <script src="include/common.js"></script>
     
     <script>
         populateMapLinks();
@@ -45,6 +45,9 @@
         const mapLocation = new MapLocation(topLeft, bottomRight, 1216, 765);
 
         showCurrentLocation();
+    </script>
+    <script>
+
         drawLocations();
     </script>
 
