@@ -41,7 +41,7 @@
   <category-icon category="🚻" color="green"></category-icon>
   <!-- </div> -->
 
-  <multi-select id="category" name="Select Category" options='["landmarks", "Toilets", "Restaurants"]'
+  <multi-select id="category" name="Select Category" options='["Landmarks", "Toilets", "Restaurants"]'
     onchange="getValue(this)"></multi-select>
   <div id="category2"></div>
   <div id="centreBox">Centre</div>
@@ -59,53 +59,15 @@
   </style>
   <script>
     function getValue(el) {
-      alert(el.value);
-      document.getElementById('category2').innerHTML = `<multi-select id="category" name="Select Category" options='["Cars", "Boats"]'></multi-select>`;
+      // alert(el.value);
+      if(el.value.includes('Landmarks')) {
+        document.getElementById('category2').innerHTML = `<multi-select id="category" name="Select Period" options='["Muslim", "Christian", "Modern"]'></multi-select>`;
+      } else {
+        document.getElementById('category2').innerHTML = ``;
+      }
     }
   </script>
 
-  <br><br>
-  <multi-select id="category" name="Select Category" options='["Landmarks", "Toilets", "Restaurants"]'></multi-select>
-  <br><br>
-  <style>
-    multi-select99 {
-      display: flex;
-    }
-
-    multi-select99 .title {
-      white-space: nowrap;
-      font-weight: bold;
-    }
-
-    multi-select99 .option-container {
-      display: flex;
-    }
-
-    multi-select99 .option {
-      display: flex;
-      flex-wrap: nowrap;
-      margin-left: 10px;
-    }
-  </style>
-
-  <multi-select99 id="category" name="Select Category"
-    options="[&quot;landmarks&quot;, &quot;Toilets&quot;, &quot;Restaurants&quot;]">
-    <div class="title">Select Category</div>
-    <div class="option-container">
-      <div class="option">
-        <input type="checkbox" data-role="select-all"> <label>Select All</label>
-      </div>
-      <div class="option">
-        <input type="checkbox" value="Landmarks"> <label>Landmarks</label>
-      </div>
-      <div class="option">
-        <input type="checkbox" value="Toilets"> <label>Toilets</label>
-      </div>
-      <div class="option">
-        <input type="checkbox" value="Restaurants"> <label>Restaurants</label>
-      </div>
-    </div>
-  </multi-select99>
   <br><br>
   <div id="map">
     <img src="images/Valencia.jpg">
@@ -113,7 +75,7 @@
   </div>
   <div id="infoBox">
     <span class="close" onclick="hideInfo()">✖</span>
-    <h3 id="infoTitle"></h3>
+    <div id="infoTitle"></div>
     <p id="infoDesc"></p>
   </div>
 
@@ -149,7 +111,7 @@
       // Scroll event
       window.visualViewport.addEventListener("scroll", () => {
         console.log("Scrolled →", window.visualViewport.pageLeft, window.visualViewport.pageTop);
-        moveElementToCentre('centreBox');
+        moveElementToCentre('infoBox');
       });
 
       // Zoom/resize event

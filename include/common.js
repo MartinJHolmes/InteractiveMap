@@ -60,10 +60,10 @@ const infoDesc = document.getElementById('infoDesc');
 
 
 function showInfo(location) {
-    infoTitle.textContent = location.title;
+    infoTitle.innerHTML = location.title;
     infoDesc.innerHTML = location.description;
     infoBox.style.display = 'block';
-    moveInfoBoxToCentre();
+    moveElementToCentre('infoBox');
 }
 
 function hideInfo() {
@@ -117,8 +117,10 @@ function moveElementToCentre(id) {
     const vv = window.visualViewport;
     const centerX = vv.pageLeft + vv.width / 2;
     const centerY = vv.pageTop + vv.height / 2;
-    infoBox.style.top = `${centerY - 100}px`;
-    infoBox.style.left = `${centerX - 125}px`;
+    infoBox.style.top = `${centerY - (100 / vv.scale)}px`;
+    infoBox.style.left = `${centerX - (125 / vv.scale)}px`;
+    infoBox.style.fontSize = `${20 / vv.scale}px`;
+    infoBox.style.width = `${250 / vv.scale}px`;
 }
 
 function populateMapLinks() {
