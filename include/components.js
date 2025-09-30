@@ -547,6 +547,40 @@ class CategoryIcon extends HTMLElement {
 
 customElements.define('category-icon', CategoryIcon);
 
+class InfoBox extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `
+      <div class="info-box">
+        <span class="close">✖</span>
+        <div class="info-title"></div>
+        <p class="info-desc"></p>
+      </div>
+    `;
+
+    this.querySelector(".close").addEventListener("click", () => this.hideInfo());
+  }
+
+  hideInfo() {
+    this.style.display = "none";
+  }
+
+  showInfo() {
+    this.style.display = "block";
+  }
+
+  setTitle(text) {
+    const titleEl = this.querySelector(".info-title");
+    if (titleEl) titleEl.textContent = text;
+  }
+
+  setDescription(text) {
+    const descEl = this.querySelector(".info-desc");
+    if (descEl) descEl.innerHTML = text;
+  }
+}
+
+customElements.define("info-box", InfoBox);
+
 
 
 

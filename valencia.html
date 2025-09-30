@@ -9,6 +9,7 @@
     <script src="include/landmarks.js"></script>
     <script src="include/map-links.js"></script>
     <script src="include/components.js"></script>
+    <script src="include/common.js"></script>
 
     <link rel="stylesheet" href="include/style.css">
     <style>
@@ -18,11 +19,6 @@
             height: 765px;
             border: 1px solid #000;
         }
-
-        #infoBox {
-            left: 600px;
-            top: 400px;
-        }
     </style>
 </head>
 
@@ -30,26 +26,17 @@
 
     <h1>Valencia</h1>
     <div class="button-container"></div>
-    <!-- <multi-select id="category" name="Select Category" options='["landmarks", "Toilets", "Restaurants"]'></multi-select> -->
     <div id="map">
         <img src="images/Valencia.jpg">
         <div id="dot"></div>
     </div>
-    <div id="infoBox">
-        <span class="close" onclick="hideInfo()">✖</span>
-        <h3 id="infoTitle"></h3>
-        <p id="infoDesc"></p>
-    </div>
-
+    <info-box id="infoBox"></info-box>
 
     <textarea id="log" readonly placeholder="GPS messages will appear here..."></textarea>
 
-    <script src="include/common.js"></script>
+    
     <script>
-
         populateMapLinks();
-
-
 
         // Map corners
         const topLeft = { lat: 39.517613664693144, lng: -0.4889598892509934 };
@@ -58,13 +45,6 @@
         const mapLocation = new MapLocation(topLeft, bottomRight, 1216, 765);
 
         showCurrentLocation();
-
-    </script>
-
-    <script>
-        // const map = document.getElementById('map');
-
-
         drawLocations();
     </script>
 

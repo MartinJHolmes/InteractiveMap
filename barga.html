@@ -8,6 +8,7 @@
     <script src="include/MapLocation.js"></script>
     <script src="include/landmarks.js"></script>
     <script src="include/map-links.js"></script>
+    <script src="include/components.js"></script>
 
     <link rel="stylesheet" href="include/style.css">
     <style>
@@ -33,11 +34,12 @@
         <img src="images/Barga.jpg">
         <div id="dot"></div>
     </div>
-    <div id="infoBox">
+    <info-box id="infoBox"></info-box>
+    <!-- <div id="infoBox">
         <span class="close" onclick="hideInfo()">✖</span>
         <h3 id="infoTitle"></h3>
         <p id="infoDesc"></p>
-    </div>
+    </div> -->
 
 
     <textarea id="log" readonly placeholder="GPS messages will appear here..."></textarea>

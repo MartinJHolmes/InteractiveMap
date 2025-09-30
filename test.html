@@ -32,14 +32,20 @@
   <h1>Valencia</h1>
   <div class="button-container"></div>
   <!-- <div class="bg-green"> -->
-  <category-icon category="✔" color="green"></category-icon>
-  <category-icon category="🍴" color="green"></category-icon>
-  <category-icon category="🚻" color="green"></category-icon>
-  <category-icon category="🚹" color="green"></category-icon>
-  <category-icon category="🏛️" color="green"></category-icon>
-  <category-icon category="🚻" color="green"></category-icon>
-  <category-icon category="🚻" color="green"></category-icon>
-  <!-- </div> -->
+  <div class="icon-container">
+    <category-icon category="✔" color="green"></category-icon>
+    <category-icon category="🍴" color="green"></category-icon>
+    <category-icon category="🚻" color="green"></category-icon>
+    <category-icon category="🚹" color="green"></category-icon>
+    <category-icon category="🏛️" color="green"></category-icon>
+    <category-icon category="🚻" color="green"></category-icon>
+    <category-icon category="🚻" color="green"></category-icon>
+  </div>
+  <style>
+    .icon-container {
+      display: flex;
+    }
+  </style>
 
   <multi-select id="category" name="Select Category" options='["Landmarks", "Toilets", "Restaurants"]'
     onchange="getValue(this)"></multi-select>
@@ -60,7 +66,7 @@
   <script>
     function getValue(el) {
       // alert(el.value);
-      if(el.value.includes('Landmarks')) {
+      if (el.value.includes('Landmarks')) {
         document.getElementById('category2').innerHTML = `<multi-select id="category" name="Select Period" options='["Muslim", "Christian", "Modern"]'></multi-select>`;
       } else {
         document.getElementById('category2').innerHTML = ``;
@@ -73,11 +79,12 @@
     <img src="images/Valencia.jpg">
     <div id="dot"></div>
   </div>
-  <div id="infoBox">
+  <!-- <div id="infoBox">
     <span class="close" onclick="hideInfo()">✖</span>
     <div id="infoTitle"></div>
     <p id="infoDesc"></p>
-  </div>
+  </div> -->
+  <info-box id="infoBox"></info-box>
 
 
   <textarea id="log" readonly placeholder="GPS messages will appear here..."></textarea>

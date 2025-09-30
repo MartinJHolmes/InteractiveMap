@@ -179,9 +179,16 @@ h3 {
     z-index: 1000;
 }
 
+#infoBox .info-title {
+    margin: 0 0 10px 0;
+    color: blue;
+    font-weight: bold;
+    font-style: italic;
+}
+
 #infoTitle {
     margin: 0 0 10px 0;
-    color: black;
+    color: blue;
     font-weight: bold;
     font-style: italic;
 }

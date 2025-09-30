@@ -60,8 +60,11 @@ const infoDesc = document.getElementById('infoDesc');
 
 
 function showInfo(location) {
-    infoTitle.innerHTML = location.title;
-    infoDesc.innerHTML = location.description;
+    // infoTitle.innerHTML = location.title;
+    // infoDesc.innerHTML = location.description;
+    infoBox.setTitle(location.title);
+    infoBox.setDescription(location.description);
+
     infoBox.style.display = 'block';
     moveElementToCentre('infoBox');
 }
@@ -126,3 +129,17 @@ function moveElementToCentre(id) {
 function populateMapLinks() {
     document.getElementsByClassName('button-container').item(0).innerHTML = mapLinks;
 }
+
+if (window.visualViewport) {
+      // Scroll event
+      window.visualViewport.addEventListener("scroll", () => {
+        console.log("Scrolled →", window.visualViewport.pageLeft, window.visualViewport.pageTop);
+        moveElementToCentre('infoBox');
+      });
+
+      // Zoom/resize event
+      window.visualViewport.addEventListener("resize", () => {
+        console.log("Zoomed/resized →", window.visualViewport.width, window.visualViewport.height,
+          "Scale:", window.visualViewport.scale);
+      });
+    }
