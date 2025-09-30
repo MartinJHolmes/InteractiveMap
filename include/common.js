@@ -120,10 +120,10 @@ function moveElementToCentre(id) {
     const vv = window.visualViewport;
     const centerX = vv.pageLeft + vv.width / 2;
     const centerY = vv.pageTop + vv.height / 2;
-    infoBox.style.top = `${centerY - (400 / vv.scale)}px`;
-    infoBox.style.left = `${centerX - (190 / vv.scale)}px`;
+    infoBox.style.top = `${centerY - (200 / vv.scale)}px`;
+    infoBox.style.left = `${centerX - (150 / vv.scale)}px`;
     infoBox.style.fontSize = `${20 / vv.scale}px`;
-    infoBox.style.width = `${350 / vv.scale}px`;
+    infoBox.style.width = `${300 / vv.scale}px`;
 }
 
 function populateMapLinks() {
