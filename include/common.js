@@ -104,6 +104,40 @@ function drawLocations() {
     });
 }
 
+function drawLocations2() {
+    locations.forEach(loc => {
+        const dotRadius = 0;
+        const point = mapLocation.getLocationOnMap(loc.lat, loc.lng);
+        if (!point) {
+            return;
+        }
+        const { x, y } = point;
+        // Create dot
+        const dot = document.createElement('category-icon');
+        dot.style.position = 'absolute';
+        dot.style.left = `${x - 14}px`;
+        dot.style.top = `${y - 22}px`;
+        // dot.style.zIndex = 1000;
+        dot.addEventListener('click', () => showInfo(loc));
+        map.appendChild(dot);
+
+        const label = document.createElement('div');
+        label.className = 'resize';
+        label.style.position = 'absolute';
+        label.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+        label.style.borderRadius = '4px';
+        label.style.fontSize = '14px';
+        label.style.padding = '4px';
+        // label.style.
+        // label.style.
+        label.style.left = `${x + 16}px`; // offset a bit to the right
+        label.style.top = `${y - 20}px`;
+        label.textContent = loc.title;
+        label.addEventListener('click', () => showInfo(loc));
+        map.appendChild(label);
+    });
+}
+
 function moveInfoBoxToCentre() {
     const infoBox = document.getElementById('infoBox');
 

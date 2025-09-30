@@ -494,8 +494,8 @@ class CategoryIcon extends HTMLElement {
   }
 
   render() {
-    const category = this.getAttribute('category') || '❓';
-    const color = this.getAttribute('color') || '#3498db';
+    const category = this.getAttribute('category') || 'i';
+    const color = this.getAttribute('color') || 'red';
 
     this.shadowRoot.innerHTML = `
       <style>
