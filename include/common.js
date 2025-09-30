@@ -121,7 +121,7 @@ function moveElementToCentre(id) {
     const centerX = vv.pageLeft + vv.width / 2;
     const centerY = vv.pageTop + vv.height / 2;
     infoBox.style.top = `${centerY - (200 / vv.scale)}px`;
-    infoBox.style.left = `${centerX - (140 / vv.scale)}px`;
+    infoBox.style.left = `${centerX - (150 / vv.scale)}px`;
     infoBox.style.fontSize = `${18 / vv.scale}px`;
     infoBox.style.width = `${280 / vv.scale}px`;
 }
