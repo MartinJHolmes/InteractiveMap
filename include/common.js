@@ -124,13 +124,15 @@ function drawLocations2() {
         const label = document.createElement('div');
         label.className = 'resize';
         label.style.position = 'absolute';
-        label.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
-        label.style.borderRadius = '4px';
+        label.style.backgroundColor = 'red';
+        label.style.color = 'white';
+        label.style.borderRadius = '10px';
+        // label.style.border = '3px solid red';
         label.style.fontSize = '14px';
-        label.style.padding = '4px';
+        label.style.padding = '2px 5px 2px 15px';
         // label.style.
         // label.style.
-        label.style.left = `${x + 16}px`; // offset a bit to the right
+        label.style.left = `${x -5}px`; // offset a bit to the right
         label.style.top = `${y - 20}px`;
         label.textContent = loc.title;
         label.addEventListener('click', () => showInfo(loc));
