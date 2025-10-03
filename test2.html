@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test</title>
+  <title>Test 2</title>
   <script src="include/MapLocation.js"></script>
   <script src="include/landmarks.js"></script>
   <script src="include/map-links.js"></script>
@@ -15,8 +15,8 @@
   <style>
     #map {
       position: relative;
-      width: 1216px;
-      height: 765px;
+      width: 880px;
+      height: 844px;
       border: 1px solid #000;
     }
 
@@ -80,18 +80,19 @@
     <svg id="drawingArea">
       <!-- <polyline id="newPath" fill="none" stroke="black" stroke-width="2"
         points="394,363 463,482 540,404 552,405 583,404 624,466 740,411 737,414 737,414 737,414"></polyline> -->
+        <!-- <polyline id="newPath" fill="none" stroke="black" stroke-width="2" points="202,120 162,314 170,498 184,549 260,619 309,642 461,686 683,483 727,455 641,326 527,218 461,179 357,114 301,90 249,98 205,118 205,118 205,118"></polyline> -->
     </svg>
     <div id="dot"></div>
   </div>
   <style>
     #map {
-      background-image: url('images/Valencia.jpg');
+      background-image: url('images/Valencia-OldTown.jpg');
     }
 
     #drawingArea {
       width: 100%;
       height: 100%;
-      border: 2px solid yellow;
+      /* border: 2px solid yellow; */
     }
   </style>
   <script src="include/PathLocation.js"></script>
@@ -116,21 +117,16 @@
 
 
     // Map corners
-    const mapWidth = 1216;
-    const mapHeight = 765;
-    const topLeft = { lat: 39.517613664693144, lng: -0.4889598892509934 };
-    const bottomRight = { lat: 39.41638957400675, lng: -0.2798250336621361 };
-    // const points = "394,363 463,482 540,404 552,405 583,404 624,466 740,411 737,414 737,414 737,414"
-    // const gpsPath = mapPointsToGPS(mapWidth, mapHeight, topLeft, bottomRight, points);
-    // console.log(JSON.stringify(gpsPath, null, 2));
-
-    // const newPolyline = pathToSVGPolyline(path, mapWidth, mapHeight, topLeft, bottomRight, strokeColor = "black", strokeWidth = 2);
-    // console.log(newPolyline);
+    const mapWidth = 880;
+    const mapHeight = 844;
+    const topLeft = { lat: 39.483261068597244, lng: -0.3892695502956495 };
+    const bottomRight = { lat: 39.46374828519189, lng: -0.3625953669880743 };
+  
     drawAllPaths(mapWidth, mapHeight, topLeft, bottomRight, 'drawingArea');
 
-    // addPathToSVG(path, mapWidth, mapHeight, topLeft, bottomRight, 'drawingArea', strokeColor = "red", strokeWidth = 2)
+    
 
-    const mapLocation = new MapLocation(topLeft, bottomRight, 1216, 765);
+    const mapLocation = new MapLocation(topLeft, bottomRight, 880, 844);
 
     showCurrentLocation();
 
@@ -140,26 +136,68 @@
     // const map = document.getElementById('map');
 
 
-    // drawLocations2();
+    drawLocations2();
   </script>
 
-  <script>
-    // if (window.visualViewport) {
-    //   // Scroll event
-    //   window.visualViewport.addEventListener("scroll", () => {
-    //     console.log("Scrolled →", window.visualViewport.pageLeft, window.visualViewport.pageTop);
-    //     moveElementToCentre('infoBox');
-    //   });
+  <category-icon2>
+      <style>
+        .pin2 {
+          position: relative;
+          width: fit-content;
+          height: 15px;
+          background: red;
+          border-radius: 100px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding-left: 0px;
+          padding-top: 3px;
+          padding-right: 3px;
+          padding-bottom: 3px;
+        }
 
-    //   // Zoom/resize event
-    //   window.visualViewport.addEventListener("resize", () => {
-    //     console.log("Zoomed/resized →", window.visualViewport.width, window.visualViewport.height,
-    //       "Scale:", window.visualViewport.scale);
-    //   });
-    // }
-  </script>
+        /* Adjusted pointer */
+        .pin2::after {
+          content: "";
+          position: absolute;
+          bottom: -12px;                 /* raise it closer */
+          left: 18px;
+          transform: translateX(-50%) rotate(45deg);
+          width: 16px;                   /* slightly smaller */
+          height: 16px;
+          background: red;
+        }
 
+        /* White inner circle */
+        .inner2 {
+          width: 25px;
+          height: 25px;
+          background: white;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 16px;
+          font-weight: bold;
+          color: black;
+          border: 6px solid red;
+          z-index: 1;
+          overflow: hidden;
+        }
 
+        .label-text {
+          color: white;
+          font-size: 14px;
+        }
+      </style>
+      <div class="pin2">
+        <div class="inner2">i</div>  
+        <div class="label-text">&nbsp;Mural de Rosita Amores &nbsp;</div>
+      </div>
+      
+    </category-icon2>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <!-- <div class="resize" style="background-color: red; color: white; border-radius: 10px; font-size: 14px; padding: 2px 5px 2px 15px">Mural de Rosita Amores</div> -->
 
 </body>
 

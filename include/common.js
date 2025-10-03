@@ -84,7 +84,7 @@ function drawLocations() {
         // Create dot
         const dot = document.createElement('div');
         let dotColour = "bg-blue";
-        if(loc.cat) {
+        if (loc.cat) {
             dotColour = dotColours.find(item => item.cat === loc.cat).dotColour;
         }
         dot.className = `dot ${dotColour}`;
@@ -132,7 +132,7 @@ function drawLocations2() {
         label.style.padding = '2px 5px 2px 15px';
         // label.style.
         // label.style.
-        label.style.left = `${x -5}px`; // offset a bit to the right
+        label.style.left = `${x - 5}px`; // offset a bit to the right
         label.style.top = `${y - 20}px`;
         label.textContent = loc.title;
         label.addEventListener('click', () => showInfo(loc));
@@ -166,16 +166,16 @@ function populateMapLinks() {
     document.getElementsByClassName('button-container').item(0).innerHTML = mapLinks;
 }
 
-if (window.visualViewport) {
-      // Scroll event
-      window.visualViewport.addEventListener("scroll", () => {
-        console.log("Scrolled →", window.visualViewport.pageLeft, window.visualViewport.pageTop);
-        moveElementToCentre('infoBox');
-      });
+// if (window.visualViewport) {
+//     // Scroll event
+//     window.visualViewport.addEventListener("scroll", () => {
+//         console.log("Scrolled →", window.visualViewport.pageLeft, window.visualViewport.pageTop);
+//         moveElementToCentre('infoBox');
+//     });
 
-      // Zoom/resize event
-      window.visualViewport.addEventListener("resize", () => {
-        console.log("Zoomed/resized →", window.visualViewport.width, window.visualViewport.height,
-          "Scale:", window.visualViewport.scale);
-      });
-    }
+//     // Zoom/resize event
+//     window.visualViewport.addEventListener("resize", () => {
+//         console.log("Zoomed/resized →", window.visualViewport.width, window.visualViewport.height,
+//             "Scale:", window.visualViewport.scale);
+//     });
+// }
