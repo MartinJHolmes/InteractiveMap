@@ -166,16 +166,16 @@ function populateMapLinks() {
     document.getElementsByClassName('button-container').item(0).innerHTML = mapLinks;
 }
 
-// if (window.visualViewport) {
-//     // Scroll event
-//     window.visualViewport.addEventListener("scroll", () => {
-//         console.log("Scrolled →", window.visualViewport.pageLeft, window.visualViewport.pageTop);
-//         moveElementToCentre('infoBox');
-//     });
+if (window.visualViewport) {
+    // Scroll event
+    window.visualViewport.addEventListener("scroll", () => {
+        console.log("Scrolled →", window.visualViewport.pageLeft, window.visualViewport.pageTop);
+        moveElementToCentre('infoBox');
+    });
 
-//     // Zoom/resize event
-//     window.visualViewport.addEventListener("resize", () => {
-//         console.log("Zoomed/resized →", window.visualViewport.width, window.visualViewport.height,
-//             "Scale:", window.visualViewport.scale);
-//     });
-// }
+    // Zoom/resize event
+    window.visualViewport.addEventListener("resize", () => {
+        console.log("Zoomed/resized →", window.visualViewport.width, window.visualViewport.height,
+            "Scale:", window.visualViewport.scale);
+    });
+}
