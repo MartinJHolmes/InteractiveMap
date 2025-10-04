@@ -115,28 +115,31 @@ function drawLocations2() {
         // Create dot
         const dot = document.createElement('category-icon');
         dot.style.position = 'absolute';
-        dot.style.left = `${x - 14}px`;
-        dot.style.top = `${y - 22}px`;
+        dot.style.left = `${x - 20}px`;
+        dot.style.top = `${y - 27}px`;
+        dot.setAttribute('label',loc.title ?? '');
+        dot.setAttribute('category',loc.cat ?? 'i');
+        dot.setAttribute('color',loc.color ?? 'red');
         // dot.style.zIndex = 1000;
         dot.addEventListener('click', () => showInfo(loc));
         map.appendChild(dot);
 
-        const label = document.createElement('div');
-        label.className = 'resize';
-        label.style.position = 'absolute';
-        label.style.backgroundColor = 'red';
-        label.style.color = 'white';
-        label.style.borderRadius = '10px';
-        // label.style.border = '3px solid red';
-        label.style.fontSize = '14px';
-        label.style.padding = '2px 5px 2px 15px';
-        // label.style.
-        // label.style.
-        label.style.left = `${x - 5}px`; // offset a bit to the right
-        label.style.top = `${y - 20}px`;
-        label.textContent = loc.title;
-        label.addEventListener('click', () => showInfo(loc));
-        map.appendChild(label);
+        // const label = document.createElement('div');
+        // label.className = 'resize';
+        // label.style.position = 'absolute';
+        // label.style.backgroundColor = 'red';
+        // label.style.color = 'white';
+        // label.style.borderRadius = '10px';
+        // // label.style.border = '3px solid red';
+        // label.style.fontSize = '14px';
+        // label.style.padding = '2px 5px 2px 15px';
+        // // label.style.
+        // // label.style.
+        // label.style.left = `${x - 5}px`; // offset a bit to the right
+        // label.style.top = `${y - 20}px`;
+        // label.textContent = loc.title;
+        // label.addEventListener('click', () => showInfo(loc));
+        // map.appendChild(label);
     });
 }
 

@@ -494,52 +494,103 @@ class CategoryIcon extends HTMLElement {
   }
 
   render() {
-    const category = this.getAttribute('category') || 'i';
+    let category = this.getAttribute('category') || 'i';
     const color = this.getAttribute('color') || 'red';
+    let label = this.getAttribute('label') || '';
+    if(label != '') {
+      label = '&nbsp;' + label + '&nbsp;&nbsp;';
+    }
+
+    switch(category) {
+      case "toilet": 
+        category = "🚻";
+    }
 
     this.shadowRoot.innerHTML = `
       <style>
+
         .pin {
+          // position: relative;
+          // width: 25px;
+          // height: 25px;
+          // background: ${color};
+          // border-radius: 50%;
+          // display: flex;
+          // align-items: center;
+          // justify-content: center;
           position: relative;
-          width: 25px;
-          height: 25px;
+          width: fit-content;
+          height: 15px;
           background: ${color};
-          border-radius: 50%;
+          border-radius: 100px;
           display: flex;
           align-items: center;
           justify-content: center;
+          padding-left: 0px;
+          padding-top: 3px;
+          padding-right: 0px;
+          padding-bottom: 3px;
         }
 
         /* Adjusted pointer */
         .pin::after {
+          // content: "";
+          // position: absolute;
+          // bottom: -3px;                 /* raise it closer */
+          // left: 50%;
+          // transform: translateX(-50%) rotate(45deg);
+          // width: 12px;                   /* slightly smaller */
+          // height: 12px;
+          // background: ${color};
           content: "";
           position: absolute;
-          bottom: -3px;                 /* raise it closer */
-          left: 50%;
+          bottom: -7px;                 /* raise it closer */
+          left: 14px;
           transform: translateX(-50%) rotate(45deg);
-          width: 12px;                   /* slightly smaller */
-          height: 12px;
+          width: 14px;                   /* slightly smaller */
+          height: 14px;
           background: ${color};
+
         }
 
         /* White inner circle */
         .inner {
-          width: 16px;
-          height: 16px;
+          // width: 16px;
+          // height: 16px;
+          // background: white;
+          // border-radius: 50%;
+          // display: flex;
+          // align-items: center;
+          // justify-content: center;
+          // font-size: 12px;
+          // font-weight: bold;
+          // color: black;
+          // // color: ${color};
+          // z-index: 1;
+
+          width: 20px;
+          height: 20px;
           background: white;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 12px;
+          font-size: 16px;
           font-weight: bold;
           color: black;
-          // color: ${color};
+          border: 4px solid ${color};
           z-index: 1;
+          overflow: hidden;
+
+        }
+        .label-text {
+          color: white;
+          font-size: 14px;
         }
       </style>
       <div class="pin">
         <div class="inner">${category}</div>
+        <div class="label-text">${label}</div>
       </div>
     `;
   }

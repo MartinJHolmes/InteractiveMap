@@ -27,7 +27,7 @@ h3 {
 
 .bg-blue {
     background-color: blue;
-} 
+}
 
 
 .small-text {
@@ -201,4 +201,8 @@ h3 {
     right: 10px;
     font-weight: bold;
     cursor: pointer;
+}
+
+category-icon {
+    z-index: 10;
 }
