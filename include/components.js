@@ -519,7 +519,7 @@ class CategoryIcon extends HTMLElement {
           // align-items: center;
           // justify-content: center;
           position: relative;
-          width: fit-content;
+          width: max-content;
           height: 15px;
           background: ${color};
           border-radius: 100px;
