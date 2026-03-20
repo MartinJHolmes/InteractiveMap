@@ -62,6 +62,8 @@ const infoDesc = document.getElementById('infoDesc');
 function showInfo(location) {
     // infoTitle.innerHTML = location.title;
     // infoDesc.innerHTML = location.description;
+    const infoBox = document.getElementById('infoBox');
+    console.log(location);
     infoBox.setTitle(location.title);
     infoBox.setDescription(location.description);
 

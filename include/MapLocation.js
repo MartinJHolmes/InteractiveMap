@@ -1,4 +1,4 @@
-class MapLocation {
+export class MapLocation {
     constructor(topLeft, bottomRight, width, height) {
     this.topLeft = topLeft;         // expects { lat: ..., lng: ... }
     this.bottomRight = bottomRight; // expects { lat: ..., lng: ... }
