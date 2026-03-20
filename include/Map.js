@@ -15,7 +15,7 @@ export class MyMap {
 
     loadNewMap(mapId) {
         const mapContainer = document.getElementById('mapContainer');
-        mapContainer.getElementsByTagName('img').item(0).src = './images/valencia.jpg';
+        mapContainer.getElementsByTagName('img').item(0).src = './images/Valencia.jpg';
     }
 
 
