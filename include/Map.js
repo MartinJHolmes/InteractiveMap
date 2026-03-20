@@ -9,13 +9,13 @@ export class MyMap {
      */
     loadMapContents(mapId) {
         this.loadNewMap(mapId);
-        console.log(`load map: ${mapId}`);
+        console.log(`load map99: ${mapId}`);
 
     }
 
     loadNewMap(mapId) {
         const mapContainer = document.getElementById('mapContainer');
-        mapContainer.getElementsByTagName('img').item(0).src = 'images/valencia.jpg';
+        mapContainer.getElementsByTagName('img').item(0).src = './images/valencia.jpg';
     }
 
 
