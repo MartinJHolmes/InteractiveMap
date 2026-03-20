@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let points = [];
   let line;
 
-  svg.addEventListener('click99', (event) => {
+  svg.addEventListener('click', (event) => {
     const pt = getSVGPoint(event);
     points.push(pt);
 
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  svg.addEventListener('dblclick99', (event) => {
+  svg.addEventListener('dblclick', (event) => {
     if (points.length > 1) {
       const pt = getSVGPoint(event);
       points.push(pt);

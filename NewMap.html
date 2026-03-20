@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Map</title>
+    <!-- <script src="include/Map.js"></script> -->
+   
+</head>
+
+<body>
+
+    <info-box id="infoBox"></info-box>
+    <!-- <div id="infoBox">
+        <span class="close" onclick="hideInfo()">✖</span>
+        <h3 id="infoTitle"></h3>
+        <p id="infoDesc"></p>
+    </div> -->
+    <h1>Valencia Old Town North</h1>
+    <div class="button-container"></div>
+    <div id="map">
+        <img src="images/Valencia-OldTown-North-East.jpg">
+        <div id="dot"></div>
+    </div>
+
+
+
+    <textarea id="log" readonly placeholder="GPS messages will appear here..."></textarea>
+
+    <!-- <script src="include/common.js"></script> -->
+    <script>
+        // @ts-check
+        import { MyMap } from "include/Map.js";
+
+        const map = new MyMap();
+        console.log(map);
+
+
+    </script>
+
+
+
+</body>
+
+</html>

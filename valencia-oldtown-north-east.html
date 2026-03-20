@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valencia Old Town North East</title>
+    <script src="include/MapLocation.js"></script>
+    <script src="include/landmarks.js"></script>
+    <script src="include/map-links.js"></script>
+    <script src="include/components.js"></script>
+
+    <link rel="stylesheet" href="include/style.css">
+    <style>
+        #map {
+            position: relative;
+            width: 733px;
+            height: 783px;
+            border: 1px solid #000;
+        }
+
+        #infoBox {
+            left: 400px;
+            top: 400px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <info-box id="infoBox"></info-box>
+    <!-- <div id="infoBox">
+        <span class="close" onclick="hideInfo()">✖</span>
+        <h3 id="infoTitle"></h3>
+        <p id="infoDesc"></p>
+    </div> -->
+    <h1>Valencia Old Town North</h1>
+    <div class="button-container"></div>
+    <div id="map">
+        <img src="images/Picture2.jpg">
+        <div id="dot"></div>
+    </div>
+
+
+
+    <textarea id="log" readonly placeholder="GPS messages will appear here..."></textarea>
+
+    <script src="include/common.js"></script>
+    <script>
+
+        populateMapLinks();
+
+
+        // Map corners
+        const topLeft = { lat: 39.47965794063206, lng: -0.38022903633212335 }; // 39.47965794063206, -0.38022903633212335
+        const bottomRight = { lat: 39.46591852887172, lng: -0.36916803198805487 }; // 39.46591852887172, -0.3703508174665538   39.471305455971454, -0.36916803198805487
+
+        const mapLocation = new MapLocation(topLeft, bottomRight, 3458, 5537);
+
+        showCurrentLocation();
+
+    </script>
+
+    <script>
+        // const map = document.getElementById('map');
+
+
+        drawLocations2();
+    </script>
+
+
+
+</body>
+
+</html>
