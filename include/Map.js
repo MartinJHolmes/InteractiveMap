@@ -6,6 +6,7 @@ export class MyMap {
         this.zoomLevel = 1;
         this.currentMap = 0;
         this.mapContainer = document.getElementById('mapContainer');
+        this.mapLocation = null;
     }
 
     /**
@@ -17,6 +18,7 @@ export class MyMap {
         this.loadNewMap(mapId);
         this.loadMapBoxes(mapId);
         this.loadLocations(mapId);
+    
 
 
     }
@@ -41,12 +43,25 @@ export class MyMap {
                 height = 844;
                 break;
             case 3:
+                topLeft = { lat: 39.48115, lng: -0.39111706213170444 };
+                bottomRight = { lat: 39.4718232581168, lng: -0.3644874558114586 };
+                width = 1762;
+                height = 819;
+                break;
+            case 4:
+                topLeft = { lat: 39.472292317315585, lng: -0.38934078322945337 };
+                bottomRight = { lat: 39.462892430793545, lng: -0.3629844416103708 };
+                width = 1762;
+                height = 819;
+                break;
+
+            case 13:
                 topLeft = { lat: 39.47984233446074, lng: -0.38100917046648236 };
                 bottomRight = { lat: 39.47438970469787, lng: -0.37436905527495845 };
                 width = 733;
                 height = 783;
                 break;
-            case 4:
+            case 14:
                 topLeft = { lat: 39.479314419480076, lng: -0.37638889230524286 };
                 bottomRight = { lat: 39.47470068660812, lng: -0.3685579114508993 };
                 width = 1057;
@@ -56,6 +71,7 @@ export class MyMap {
 
 
         const mapLocation = new MapLocation(topLeft, bottomRight, width, height);
+        this.mapLocation = mapLocation;
 
         console.log(`locations: ${locations.length}`);
 
@@ -78,6 +94,8 @@ export class MyMap {
             dot.addEventListener('click', () => showInfo(loc));
             this.mapContainer.appendChild(dot);
         });
+
+        this.showCurrentLocation(mapLocation);
     }
 
     loadMapBoxes(mapId) {
@@ -86,13 +104,18 @@ export class MyMap {
         };
 
         if (mapId == 1) {
-            this.appendBoxToMap({ mapId: 3, x: 270, y: 120, w: 200, h: 220 });
-            this.appendBoxToMap({ mapId: 4, x: 400, y: 180, w: 200, h: 220 });
+            this.appendBoxToMap({ mapId: 3, x: 20, y: 100, w: 800, h: 420 });
+            this.appendBoxToMap({ mapId: 4, x: 20, y: 450, w: 800, h: 420 });
         }
 
     }
 
     loadNewMap(mapId) {
+        const dot = document.createElement('div');
+        dot.id = 'dot';
+        this.mapContainer.appendChild(dot);
+
+
         const mapPicture = document.createElement('img');
 
         switch (mapId) {
@@ -103,10 +126,10 @@ export class MyMap {
                 mapPicture.src = './images/Valencia-OldTown.jpg';
                 break;
             case 3:
-                mapPicture.src = './images/Valencia-OldTown-North.jpg';
+                mapPicture.src = './images/OldTown-North.jpg';
                 break;
             case 4:
-                mapPicture.src = './images/Valencia-OldTown-North-East.jpg';
+                mapPicture.src = './images/OldTown-South.jpg';
                 break;
             default:
                 alert(`Map ${mapId} does not exist`);
@@ -144,6 +167,42 @@ export class MyMap {
         box.style.backgroundColor = "rgba(255,0,0,0.2)";
 
         container.appendChild(box);
+    }
+
+    showLocation(mapLocation) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                const { latitude, longitude } = position.coords;
+
+                // Print GPS position to textarea
+                logMessage(`Current Position -> Latitude: ${latitude}, Longitude: ${longitude}`);
+
+                const point = this.mapLocation.getLocationOnMap(latitude, longitude);
+                if (!point) {
+                    return;
+                }
+                const { x, y } = point;
+                const dot = document.getElementById('dot');
+                dot.style.left = `${x}px`;
+                dot.style.top = `${y}px`;
+                dot.style.display = 'block';
+                dot.style.animation = 'none';
+                void dot.offsetWidth;
+                dot.style.animation = 'pulse 1.5s infinite, stopAfter 5s forwards';
+            }, (error) => {
+                logMessage("Error getting location: " + error.message);
+            });
+        } else {
+            logMessage("Geolocation is not supported by this browser.");
+        }
+    }
+
+    async showCurrentLocation(mapLocation) {
+        for (let i = 0; i < 10000000; i++) {
+            this.showLocation(mapLocation);
+            await doWait(10000);
+
+        }
     }
 
 }

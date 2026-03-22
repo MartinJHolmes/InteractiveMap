@@ -10,6 +10,7 @@ async function doWait(waitTime) {
 
 function logMessage(message) {
     // Append message to textarea and scroll to bottom
+    const logBox = document.getElementById('log');
     logBox.value += message + "\n";
     logBox.scrollTop = logBox.scrollHeight;
     console.log(message); // still log to console
