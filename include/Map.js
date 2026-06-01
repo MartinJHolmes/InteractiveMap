@@ -14,15 +14,17 @@ export class MyMap {
      */
     loadMapContents(mapId) {
         console.log(`load map: ${mapId}`);
-        this.mapContainer.innerHTML = '';
+        if (this.mapContainer != null) {
+            this.mapContainer.innerHTML = '';
+        }
         this.loadNewMap(mapId);
         this.loadMapBoxes(mapId);
         this.loadLocations(mapId);
-    
-
-
     }
 
+    /**
+     * @param {number} mapId
+     */
     loadLocations(mapId) {
         let topLeft = null;
         let bottomRight = null;
@@ -30,6 +32,12 @@ export class MyMap {
         let height = 0;
 
         switch (mapId) {
+            case -1:
+                topLeft = { lat: 39.501, lng: -0.4275 }; // 39.498488837616925, -0.4223247889867024
+                bottomRight = { lat: 39.44071087808768, lng: -0.3136532188001548 }; // 39.44071087808768, -0.3136532188001548
+                width = 3662;
+                height = 2868;
+                break;
             case 0:
                 topLeft = { lat: 39.517613664693144, lng: -0.4889598892509934 };
                 bottomRight = { lat: 39.41638957400675, lng: -0.2798250336621361 };
@@ -111,6 +119,8 @@ export class MyMap {
     }
 
     loadNewMap(mapId) {
+
+        console.log(`map id: ${mapId}`);
         const dot = document.createElement('div');
         dot.id = 'dot';
         this.mapContainer.appendChild(dot);
@@ -119,6 +129,9 @@ export class MyMap {
         const mapPicture = document.createElement('img');
 
         switch (mapId) {
+            case -1:
+                mapPicture.src = './images/bus-map.jpg';
+                break;
             case 0:
                 mapPicture.src = './images/Valencia.jpg';
                 break;
@@ -164,7 +177,7 @@ export class MyMap {
 
         // optional styling so you can see it
         box.style.border = "2px solid red";
-        box.style.backgroundColor = "rgba(255,0,0,0.2)";
+        box.style.backgroundColor = "rgba(255,0,0,0.1)";
 
         container.appendChild(box);
     }

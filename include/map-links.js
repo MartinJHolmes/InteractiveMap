@@ -9,3 +9,4 @@ mapLinks += "<a class='custom-btn' href='barga.html'>Barga</a>";
 mapLinks += "<a class='custom-btn' href='test.html'>Test</a>";
 mapLinks += "<a class='custom-btn' href='test2.html'>Test 2</a>";
 mapLinks += "<a class='custom-btn' href='NewMap.html'>NewMap</a>";
+mapLinks += "<a class='custom-btn' href='photo-list.html'>Photo List</a>";

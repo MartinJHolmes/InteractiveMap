@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Map</title>
+    <script src="include/components.js"></script>
+    <script src="include/common.js"></script>
+    <link rel="stylesheet" href="include/style.css">
+    <!-- <script src="include/Map.js"></script> -->
+    
+     
+</head>
+
+<body>
+    <style>
+        #mapContainer {
+            position: relative;
+        }
+    </style>
+
+    <info-box id="infoBox"></info-box>
+    <!-- <div id="infoBox">
+        <span class="close" onclick="hideInfo()">✖</span>
+        <h3 id="infoTitle"></h3>
+        <p id="infoDesc"></p>
+    </div> -->
+    <h1 id="page-title">Valencia</h1>
+    <div class="button-container"></div>
+    <div id="mapContainer">
+        <img id="mapPicture"/>
+        <div id="dot"></div>
+    </div>
+    <info-box id="infoBox"></info-box>
+
+
+
+    <textarea id="log" readonly placeholder="GPS messages will appear here..."></textarea>
+
+    <!-- <script src="include/common.js"></script> -->
+     <script type="module" src="./include/landmarks.js"></script>
+
+    <script type="module" src="./include/main.js"></script>
+    
+
+
+</body>
+
+</html>

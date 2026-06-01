@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photo Gallery</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #photoGrid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    #photoGrid img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    #photoGrid img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>My Photo Gallery</h1>
+
+  <div id="photoGrid"></div>
+
+  <script>
+    fetch("images/photos/photos.json")
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Failed to load JSON file");
+        }
+        return response.json();
+      })
+      .then(files => {
+        const grid = document.getElementById("photoGrid");
+
+        files.forEach(file => {
+          const img = document.createElement("img");
+          img.src = `images/photos/${file}`;
+          img.alt = file;
+
+          grid.appendChild(img);
+        });
+      })
+      .catch(error => {
+        console.error("Error loading photos:", error);
+      });
+  </script>
+
+</body>
+</html>

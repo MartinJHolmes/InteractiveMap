@@ -605,6 +605,8 @@ class InfoBox extends HTMLElement {
         <span class="close">✖</span>
         <div class="info-title"></div>
         <p class="info-desc"></p>
+        <div id="picture-container">
+          <img src="bus.jpg">
       </div>
     `;
 
