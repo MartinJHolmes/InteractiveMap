@@ -23,7 +23,7 @@ export const locations = [
     { lat: 39.47410786926945, lng: -0.3764087747662497, title: "Esglesia de Santa Catalina", description: "" },
     { color: "green", lat: 39.47705585494232, lng: -0.3798133681382334, title: "AmaMi", description: "Very interesting Italian restaurant" },
     { color: "green", lat: 39.49897, lng: -0.4016340325016418, title: "Metro Station", description: "" },
-    { lat: 39.00000000000001, lng: -0.0000000000000001, title: "", description: "" },
+    { lat: 39.47408231505209, lng: -0.37681595312269023, title: "Very Narrow Building", description: "" },
     { lat: 39.00000000000001, lng: -0.0000000000000001, title: "", description: "" },
     { lat: 39.00000000000001, lng: -0.0000000000000001, title: "", description: "" },
     { lat: 39.00000000000001, lng: -0.0000000000000001, title: "", description: "" },
@@ -31,6 +31,7 @@ export const locations = [
     { lat: 39.00000000000001, lng: -0.0000000000000001, title: "", description: "" },
     { lat: 44.072330049911834, lng: 10.483397530000532, title: "Pizzeria Che Pizza", description: "Possibly the best pizzas in town." },
 ];
+39.47408231505209, -0.37681595312269023
 
 const dotColours = [
     {cat: "fun", dotColour: "bg-green"},
