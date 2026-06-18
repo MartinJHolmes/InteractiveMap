@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Map</title>
+    <script src="include/components.js"></script>
+    <script src="include/common.js"></script>
+    <link rel="stylesheet" href="include/style.css">
+    <!-- <script src="include/Map.js"></script> -->
+
+
+
+</head>
+
+<body>
+    <style>
+        #mapContainer {
+            position: relative;
+        }
+    </style>
+
+    <info-box id="infoBox"></info-box>
+    <!-- <div id="infoBox">
+        <span class="close" onclick="hideInfo()">✖</span>
+        <h3 id="infoTitle"></h3>
+        <p id="infoDesc"></p>
+    </div> -->
+    <h1 id="page-title">Valencia</h1>
+    <div class="button-container"></div>
+    <div id="mapContainer">
+        <img id="mapPicture" />
+        <div id="dot"></div>
+    </div>
+    <info-box id="infoBox"></info-box>
+
+
+
+    <textarea id="log" readonly placeholder="GPS messages will appear here..."></textarea>
+
+    <!-- <script src="include/common.js"></script> -->
+    <script type="module" src="./include/landmarks.js"></script>
+
+    <!-- <script type="module" src="./include/main2.js"></script> -->
+    <script type="module">
+        import { Map } from "./include/Map2.js";
+        const map = new Map();
+        map.loadMapContents(0);
+
+        const mapContainer = document.getElementById("mapContainer");
+
+        mapContainer.addEventListener("contextmenu", (event) => {
+            // Prevent the browser's normal right-click menu
+            event.preventDefault();
+
+            // Coordinates relative to the mapContainer
+            const rect = mapContainer.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            console.log(map.mapDefinition.topLeft.lng);
+            map.getCoordinate(x, y);
+        });
+    </script>
+
+
+</body>
+
+</html>

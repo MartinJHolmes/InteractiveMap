@@ -188,6 +188,11 @@ h3 {
     font-style: italic;
 }
 
+#infoBox .info-desc {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
 #infoTitle {
     margin: 0 0 10px 0;
     color: blue;
