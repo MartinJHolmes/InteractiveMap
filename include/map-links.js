@@ -1,12 +1,4 @@
-mapLinks = "";
+let mapLinks = "";
 mapLinks += "<a class='custom-btn' href='index.html'>Home Page</a>";
-mapLinks += "<a class='custom-btn' href='valencia.html'>Valencia</a>";
-mapLinks += "<a class='custom-btn' href='valencia-oldtown.html'>Old Town</a>";
-mapLinks += "<a class='custom-btn' href='valencia-oldtown-north.html'>Old Town North</a>";
-mapLinks += "<a class='custom-btn' href='valencia-oldtown-north-east.html'>Old Town North East</a>";
-mapLinks += "<a class='custom-btn' href='portsaplaya.html'>Port Saplaya</a>";
-mapLinks += "<a class='custom-btn' href='barga.html'>Barga</a>";
-mapLinks += "<a class='custom-btn' href='test.html'>Test</a>";
-mapLinks += "<a class='custom-btn' href='test2.html'>Test 2</a>";
-mapLinks += "<a class='custom-btn' href='NewMap.html'>NewMap</a>";
+mapLinks += "<a class='custom-btn' href='NewMap.html'>Map</a>";
 mapLinks += "<a class='custom-btn' href='photo-list.html'>Photo List</a>";

@@ -1,7 +1,7 @@
 import { MapLocation } from "./MapLocation.js";
-import { locations } from "./landmarks.js";
+import { locations } from "../data/landmarks.js";
 
-export class MyMap {
+export class Map {
     constructor(locations) {
         this.zoomLevel = 1;
         this.currentMap = 0;

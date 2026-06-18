@@ -23,9 +23,9 @@ class CategoryIcon extends HTMLElement {
     let category = this.getAttribute('category') || 'i';
     const color = this.getAttribute('color') || 'red';
     let label = this.getAttribute('label') || '';
-    // if (label != '') {
-    //   label = '&nbsp;' + label + '&nbsp;&nbsp;';
-    // }
+    if (label != '') {
+      label = '&nbsp;' + label + '&nbsp;&nbsp;';
+    }
 
     switch (category) {
       case "toilet":
@@ -138,8 +138,9 @@ class InfoBox extends HTMLElement {
         <span class="close">✖</span>
         <div class="info-title"></div>
         <p class="info-desc"></p>
-        <div id="picture-container">
+        <!-- <div id="picture-container">
           <img src="bus.jpg">
+        </div> -->
       </div>
     `;
 

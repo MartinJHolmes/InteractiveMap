@@ -1,8 +1,8 @@
 
-import { MyMap } from "./Map.js";
+import { Map } from "./Map.js";
 
 
-const mymap = new MyMap();
+const mymap = new Map();
 
 mymap.loadMapContents(0);
 

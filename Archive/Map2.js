@@ -1,5 +1,5 @@
 import { Coordinate, MapDefinition } from "./MapDefinition.js";
-import { locations } from "./landmarks.js";
+import { locations } from "../././data/landmarks.js";
 
 export class Map {
     constructor() {
