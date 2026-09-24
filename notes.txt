@@ -1,0 +1,30 @@
+
+Main File
+---------
+title
+<info-box id=infoBox>
+mapContainer
+log
+
+data:
+  map:
+    mapCoordinates
+    mapPictureName
+    subMaps
+    superMaps
+
+functions
+  loadInitialMap(mapNumber)    
+    hide controls?
+    hide infoBox
+    delete all <category-icon>
+    ---
+    displayCategoryIcons()
+    displaySubMaps()
+    
+
+
+
+
+
+

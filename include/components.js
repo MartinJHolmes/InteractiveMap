@@ -11,6 +11,25 @@ class CategoryIcon extends HTMLElement {
     this.attachShadow({ mode: 'open' });
   }
 
+  /**
+   * @param {boolean} expand
+   */
+  expand(expand) {
+    // console.log(`This should expand`);
+    if (this.shadowRoot != null) {
+      const label = this.shadowRoot.querySelector('.label-text');
+      // console.log(`html: ${label?.innerHTML}`);
+      if(label instanceof HTMLElement) {
+        if(expand) {
+          label.style.display = 'block';
+        } else {
+          label.style.display = 'none';
+        }
+        
+      }
+    }
+  }
+
   connectedCallback() {
     this.render();
   }
@@ -29,7 +48,22 @@ class CategoryIcon extends HTMLElement {
 
     switch (category) {
       case "toilet":
-        category = "🚻";
+        category = "\u{1F6BB}"; // 🚻
+        break;
+      case "landmark":
+        category = "\u{1F3DB}"
+        break;
+      case "restaurant":
+        category = "\u{1F374}";
+        break;
+      case "church":
+        category ="\u{271D}";
+        break;
+      case "museum":
+        category ="\u{1F3FA}";
+        break;
+      default:
+        category = "i";
     }
 
     if (this.shadowRoot == null) {
@@ -182,6 +216,73 @@ class InfoBox extends HTMLElement {
 customElements.define("info-box", InfoBox);
 
 
+class MultiSelect2 extends HTMLElement {
+  constructor() {
+    super();
+  }
 
+  connectedCallback() {
+    const options = JSON.parse(this.getAttribute('options') || '[]');
+    const name = this.getAttribute('name') || 'Select Items';
+
+    if (this.rendered) return;
+    this.rendered = true;
+
+    this.innerHTML = `
+      <h3>${name}</h3>
+      <label>
+        <input type="checkbox" data-role="select-all"> Select All
+      </label>
+      <div class="options"></div>
+    `;
+
+    const optionsContainer = this.querySelector('.options');
+    options.forEach(opt => {
+      const label = document.createElement('label');
+      label.style.display = 'block';
+      label.innerHTML = `<input type="checkbox" value="${opt}"> ${opt}`;
+      optionsContainer.appendChild(label);
+    });
+
+    const checkboxes = this.querySelectorAll('input[type="checkbox"]:not([data-role="select-all"])');
+    const selectAll = this.querySelector('[data-role="select-all"]');
+
+    let suppressDispatch = false;
+
+    const updateAll = () => {
+      suppressDispatch = true;
+      checkboxes.forEach(cb => cb.checked = selectAll.checked);
+      suppressDispatch = false;
+      this.dispatchSelection();
+    };
+
+    const updateSelectAll = () => {
+      if (!suppressDispatch) {
+        const allChecked = [...checkboxes].every(cb => cb.checked);
+        selectAll.checked = allChecked;
+        this.dispatchSelection();
+      }
+    };
+
+    checkboxes.forEach(cb => cb.addEventListener('change', updateSelectAll));
+    selectAll.addEventListener('change', updateAll);
+  }
+
+  dispatchSelection() {
+    this.dispatchEvent(new CustomEvent('selection-change', {
+      bubbles: true,
+      detail: this.value
+    }));
+  }
+
+  get value() {
+    const checkboxes = this.querySelectorAll('input[type="checkbox"]:not([data-role="select-all"])');
+    return [...checkboxes]
+      .filter(cb => cb.checked)
+      .map(cb => cb.value);
+  }
+}
+
+customElements.define('multi-select', MultiSelect2);
 
 

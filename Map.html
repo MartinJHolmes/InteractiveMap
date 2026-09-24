@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Map</title>
+    <script src="include/components.js"></script>
+    <script src="include/common.js"></script>
+    <link rel="stylesheet" href="include/style.css">
+    <link rel="stylesheet" href="include/components.css">
+</head>
+
+<body>
+    <style>
+        #mapContainer {
+            position: relative;
+        }
+    </style>
+
+    <info-box id="infoBox"></info-box>
+    <h1 id="page-title">Valencia v4</h1>
+    <div class="button-container"></div>
+    <div id="mapContainer">
+        <img id="mapPicture" />
+        <div id="dot"></div>
+    </div>
+    <info-box id="infoBox"></info-box>
+
+    <div onclick="expandIcons()">Expand</div>
+    <script>
+        function expandIcons() {
+            document.querySelectorAll("category-icon").forEach(icon => {
+                icon.expand(false);
+            });
+        }
+    </script>
+
+    <multi-select id="categoryList" name="Select Category" options=["landmark","toilet","restaurant","church"]></multi-select>
+
+    <script type="module">
+        import { MapContainer } from "./include/Classes.js";
+        const categoryList = document.getElementById('categoryList');
+
+        categoryList.addEventListener("change", getSelectedCategories);
+
+        function getSelectedCategories() {
+            const checkboxes = categoryList.querySelector('.options').querySelectorAll("input:checked");
+            let selectedValue = Array.from(checkboxes).map(cb => cb.value);
+            // this.el.querySelector('div.dropdown-selected').innerHTML = selectedValue;
+            console.log(selectedValue);
+
+            MapContainer.removeCategoryIcons();
+            MapContainer.drawCategoryIcons(selectedValue);
+
+            return selectedValue
+        }
+    </script>
+
+    <textarea id="log" readonly placeholder="GPS messages will appear here..."></textarea>
+
+    <script type="module">
+        import { MapContainer } from "./include/Classes.js";
+        MapContainer.setMap(0);
+
+    </script>
+
+</body>
+
+</html>
