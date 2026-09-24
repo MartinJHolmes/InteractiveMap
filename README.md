@@ -9,3 +9,5 @@ git push origin master
 https://martinjholmes.github.io/InteractiveMap/index.html
 
 
+git checkout -b your-branch-name
+git push -u origin your-branch-name
