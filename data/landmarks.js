@@ -40,7 +40,7 @@ export const locations = [
     { cat: "restaurant", color: "green", lat: 39.47052382369621, lng: -0.37569501936452143, title: "Bharat", description: "Not visited" },
     { cat: "restaurant", color: "green", lat: 39.474253013576615, lng: -0.3807141733368303, title: "Giardino del Carmen", description: "Italian very good" },
     { cat: "restaurant", color: "green", lat: 39.50850684882896, lng: -0.3217124058075693, title: "No. 9", description: "Really good value for money" },
-    { cat: "restaurant", color: "green", lat: 39.0, lng: -0.1, title: "", description: "" },
+    { cat: "restaurant", color: "green", lat: 39.47389013759772, lng: -0.37699998362100295, title: "El ocho y medio", description: "Very good food with a great atmosphere in the square" },
     { cat: "restaurant", color: "green", lat: 39.0, lng: -0.1, title: "", description: "" },
     { cat: "restaurant", color: "green", lat: 39.0, lng: -0.1, title: "", description: "" },
     { cat: "restaurant", color: "green", lat: 39.0, lng: -0.1, title: "", description: "" },
@@ -49,7 +49,7 @@ export const locations = [
     { cat: "landmark", lat: 44.072330049911834, lng: 10.483397530000532, title: "Pizzeria Che Pizza", description: "Possibly the best pizzas in town." },
 ];
 
-// 39.46666519633442, -0.3646110039676873
+// 39.47389013759772, -0.37699998362100295
 
 
 
