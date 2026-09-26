@@ -93,8 +93,44 @@ export class MapContainer {
         // this.drawSubMaps(this.currentMapNumber);
         this.drawSubMaps(map);
 
+        this.showCurrentLocation();
 
+    }
 
+    static showLocation(mapLocation) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                const { latitude, longitude } = position.coords;
+
+                // Print GPS position to textarea
+                logMessage(`Current Position -> Latitude: ${latitude}, Longitude: ${longitude}`);
+
+                const point = this.returnMapLocation(latitude, longitude);
+                if (!point) {
+                    return;
+                }
+                const { x, y } = point;
+                const dot = document.getElementById('dot');
+                dot.style.left = `${x}px`;
+                dot.style.top = `${y}px`;
+                dot.style.display = 'block';
+                dot.style.animation = 'none';
+                void dot.offsetWidth;
+                dot.style.animation = 'pulse 1.5s infinite, stopAfter 5s forwards';
+            }, (error) => {
+                logMessage("Error getting location: " + error.message);
+            });
+        } else {
+            logMessage("Geolocation is not supported by this browser.");
+        }
+    }
+
+    static async showCurrentLocation(mapLocation) {
+        for (let i = 0; i < 10000000; i++) {
+            this.showLocation(mapLocation);
+            await doWait(10000);
+
+        }
     }
 
     /**
@@ -102,6 +138,11 @@ export class MapContainer {
      */
     static drawCategoryIcons(categories) {
         console.log(`locations: ${locations.length}`);
+
+        if(categories == null) {
+            let catList = document.getElementById('categoryList');
+            categories = catList.value;
+        }
 
         let filtered = locations;
 
@@ -237,6 +278,43 @@ export class MapContainer {
 
         // container.appendChild(box);
         this.mapContainerId?.appendChild(box);
+    }
+
+    showLocation(mapLocation) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                const { latitude, longitude } = position.coords;
+
+                // Print GPS position to textarea
+                logMessage(`Current Position -> Latitude: ${latitude}, Longitude: ${longitude}`);
+
+                const point = this.mapLocation.getLocationOnMap(latitude, longitude);
+                if (!point) {
+                    return;
+                }
+                const { x, y } = point;
+                const dot = document.getElementById('dot');
+                dot.style.left = `${x}px`;
+                dot.style.top = `${y}px`;
+                dot.style.display = 'block';
+                dot.style.animation = 'none';
+                void dot.offsetWidth;
+                dot.style.animation = 'pulse 1.5s infinite, stopAfter 5s forwards';
+            }, (error) => {
+                logMessage("Error getting location: " + error.message);
+            });
+        } else {
+            logMessage("Geolocation is not supported by this browser.");
+        }
+    }
+
+    async showCurrentLocation() {
+        for (let i = 0; i < 10000000; i++) {
+            // this.showLocation(mapLocation);
+            console.log('Attempt to show current location');
+            await doWait(10000);
+
+        }
     }
 }
 

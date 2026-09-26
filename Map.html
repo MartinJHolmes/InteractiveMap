@@ -27,7 +27,7 @@
     </div>
     <info-box id="infoBox"></info-box>
 
-    <div onclick="expandIcons()">Expand</div>
+    <!-- <div onclick="expandIcons()">Expand</div> -->
     <script>
         function expandIcons() {
             document.querySelectorAll("category-icon").forEach(icon => {
@@ -36,13 +36,19 @@
         }
     </script>
 
-    <multi-select id="categoryList" name="Select Category" options=["landmark","toilet","restaurant","church"]></multi-select>
+    <div id="previousMap">Previous Map</div>
+
+    <multi-select id="categoryList" name="Select Category"
+        options=["landmark","toilet","restaurant","church"]></multi-select>
 
     <script type="module">
         import { MapContainer } from "./include/Classes.js";
         const categoryList = document.getElementById('categoryList');
 
         categoryList.addEventListener("change", getSelectedCategories);
+
+        const previousMapBtn = document.getElementById('previousMap'); // 1. Grab the element
+        previousMapBtn.addEventListener("click", getPreviousMap);
 
         function getSelectedCategories() {
             const checkboxes = categoryList.querySelector('.options').querySelectorAll("input:checked");
@@ -51,9 +57,13 @@
             console.log(selectedValue);
 
             MapContainer.removeCategoryIcons();
-            MapContainer.drawCategoryIcons(selectedValue);
+            MapContainer.drawCategoryIcons(selectedValue)
 
             return selectedValue
+        }
+
+        function getPreviousMap() {
+            MapContainer.setMap(MapContainer.previousMapNumber);
         }
     </script>
 

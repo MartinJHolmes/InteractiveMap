@@ -20,6 +20,8 @@ export class Map {
         this.loadNewMap(mapId);
         this.loadMapBoxes(mapId);
         this.loadLocations(mapId);
+
+        this.showCurrentLocation();
     }
 
     /**

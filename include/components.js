@@ -231,7 +231,7 @@ class MultiSelect2 extends HTMLElement {
     this.innerHTML = `
       <h3>${name}</h3>
       <label>
-        <input type="checkbox" data-role="select-all"> Select All
+        <input type="checkbox" data-role="select-all" checked> Select All
       </label>
       <div class="options"></div>
     `;
@@ -240,7 +240,7 @@ class MultiSelect2 extends HTMLElement {
     options.forEach(opt => {
       const label = document.createElement('label');
       label.style.display = 'block';
-      label.innerHTML = `<input type="checkbox" value="${opt}"> ${opt}`;
+      label.innerHTML = `<input type="checkbox" checked value="${opt}"> ${opt}`;
       optionsContainer.appendChild(label);
     });
 
